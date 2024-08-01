@@ -8,10 +8,5 @@ public:
 	Admin();
 	~Admin();
 
-
-
-
-
-
 };
 

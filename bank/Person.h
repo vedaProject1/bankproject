@@ -11,6 +11,7 @@ public:
 	string get_id();
 	string get_pw();
 	string get_name();
+	Person() {};
 	Person(string id, string pw, string name);
 	~Person();
 };
