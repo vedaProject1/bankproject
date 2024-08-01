@@ -8,6 +8,7 @@ class Account {
 	double  balance;
 
 public:
+	Account() {};
 	Account(long a, double b);
 	~Account();
 	long get_account_num();
