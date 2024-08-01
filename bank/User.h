@@ -6,7 +6,7 @@
 
 class User :public Person
 {
-	vector<Account> user_account;
+	vector<unique_ptr<Account>> user_account;
 
 public:
 	vector<Account>& get_user_account();
