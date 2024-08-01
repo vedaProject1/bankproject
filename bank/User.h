@@ -12,6 +12,14 @@ public:
 	Account * add_account();
 	User (string id, string pw, string name);
 	~User ();
+	void deposit( long long account_num, long amount);
+	void withDraw(long long  account_num , long amount);
+	double getBalance( long long account_num);
+	Account* get_user_account(long long account_num);
 	long long generateAccountNumber();
+	void show_all_accounts();
+
+private:
+	Account* findAccountByNumber(vector<unique_ptr<Account>>& accounts, long long account_num);
 };
 
