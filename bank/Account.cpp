@@ -1,8 +1,8 @@
 #include"Account.h"
 
-Account::Account(long a, double b) {
-	this->account_num = a;
-	this->balance = b;
+Account::Account(long long  account_num, double balance) {
+	this->account_num = account_num;
+	this->balance = balance;
 }
 Account::~Account() {
 
