@@ -9,8 +9,9 @@ class User :public Person
 	vector<unique_ptr<Account>> user_account;
 
 public:
-	vector<Account>& get_user_account();
+	Account * add_account();
 	User (string id, string pw, string name);
 	~User ();
+	long long generateAccountNumber();
 };
 
