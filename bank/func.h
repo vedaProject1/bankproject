@@ -45,10 +45,11 @@ string login(vector<Person*>ulist) {
 	{
 		if (id == "admin" && pw == "1234")
 			return "admin";
-		if (id == (*it)->get_id() && pw == (*it)->get_pw())
+		else if (id == (*it)->get_id() && pw == (*it)->get_pw())
 		{
 			return "로그인성공";
 		}
-		else return "로그인실패";
+	
 	}
+	return "로그인실패";
 }

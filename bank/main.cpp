@@ -6,7 +6,9 @@
 
 using namespace std;
 int main() {
-	vector<Person*> user_list;
+	//vector<Person*> user_list;
+	Admin admin;
+	admin.user_list.push_back(new User("dong", "1234", "asdasd"));
 	
 	int menuNO;
 	do
@@ -20,14 +22,13 @@ int main() {
 		switch (menuNO)
 		{
 		case 1://회원가입
-			join(user_list);
-			
+			join(admin.user_list);
 			break;
 		case 2: {//로그인
 
-			string login_value = login(user_list);
+			string login_value = login(admin.user_list);
 			if (login_value == "admin")
-				cout << "관리자"<<endl;
+				admin.admin_menu();
 			else if (login_value == "로그인성공")
 				cout << "로그인성공" << endl;
 			else if (login_value == "로그인실패")

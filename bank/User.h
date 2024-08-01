@@ -9,6 +9,8 @@ class User :public Person
 public:
 	Account get_user_account();
 	User (string id, string pw, string name);
+	User() {};
 	~User ();
+	
 };
 
