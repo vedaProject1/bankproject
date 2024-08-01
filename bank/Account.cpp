@@ -7,7 +7,14 @@ Account::Account(long long  account_num, double balance) {
 Account::~Account() {
 
 }
-long Account::get_account_num() {
+
+Account::Account(long long  account_num) {
+	this->account_num = account_num;
+	balance = 0;
+
+}
+
+long long Account::get_account_num() const {
 	return this->account_num;
 }
 double Account::get_balance() {
