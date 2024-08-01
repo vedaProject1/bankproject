@@ -6,8 +6,8 @@
 #include"Account.h"
 using namespace std;
 
-void join(vector<Person> &ulist) {//&ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ 
-	cout << "È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½\n";
+void join(vector<Person> &ulist) {//&·Î Á¢±ÙÇØ¼­ ¼öÁ¤ 
+	cout << "È¸¿ø°¡ÀÔ ½ÃÀÛ\n";
 	string i, p, n;
 	vector<Person>::iterator it;
 	while (1) {
@@ -16,8 +16,8 @@ void join(vector<Person> &ulist) {//&ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 		bool check = true;
 		for (it = ulist.begin(); it != ulist.end(); it++)
 		{
-			if (i == (*it).get_id() || i == "admin_id") {
-				cout << "ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ idï¿½Ô´Ï´ï¿½\n";
+			if (i == (*it).get_id() || i == "admin") {
+				cout << "ÀÌ¹Ì »ç¿ëÁßÀÎ idÀÔ´Ï´Ù\n";
 				check = false;
 			}
 		}
@@ -27,27 +27,48 @@ void join(vector<Person> &ulist) {//&ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 	cin >> p;
 	cout << "name:";
 	cin >> n;
-	cout << "È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½\n";
+	cout << "È¸¿ø°¡ÀÔÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù\n";
 	Person temp(i, p, n);
 	ulist.push_back(temp);
 }
-void login(string id, string pw, vector<Person>ulist) {
-
-
-
-
+string login(string id, string pw, vector<Person>ulist) {
+	vector<Person>::iterator it;
+	for (it = ulist.begin(); it != ulist.end(); it++)
+	{
+		if (id == "admin" && pw == "1234")
+			return "admin";
+		if (id == it->get_id() && pw == it->get_pw())
+		{
+			return "·Î±×ÀÎ¼º°ø";
+		}
+		else return "·Î±×ÀÎ½ÇÆÐ";
+	}
 }
+
+
 int main() {
-	Account temp = {1231124,100000};
 
 	vector<Person> user_list;
-	while (1) {
-		join(user_list);
-	}
+
+	join(user_list);
+	string a;
+	string b;
+	cout << "·Î±×ÀÎÇÏ¼¼¿ä"<< endl;
+	cout << "id:";
+	cin >> a;
+	cout << "pw:";
+	cin>> b;
+	string login_value = login(a, b, user_list);
+	if(login_value=="admin")
+		cout << "°ü¸®ÀÚ";
+	else if (login_value == "·Î±×ÀÎ¼º°ø")
+		cout << "·Î±×ÀÎ¼º°ø";
+	else if (login_value == "·Î±×ÀÎ½ÇÆÐ")
+		cout << "·Î±×ÀÎ½ÇÆÐ";
 
 
-	cout << temp.get_account_num() << endl;
-	cout << temp.get_balance() << endl;
+
+
 
 
 	return 0;
