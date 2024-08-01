@@ -9,14 +9,14 @@ int main() {
 	Account temp = {1231124,100000};
 
 
-<<<<<<< Updated upstream
+
 	cout <<" 메인 변경";
-=======
+
 	cout << temp.get_account_num() << endl;
 	cout << temp.get_balance() << endl;
 
 
 
 	return 0;
->>>>>>> Stashed changes
+
 }
