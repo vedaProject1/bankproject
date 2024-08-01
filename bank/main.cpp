@@ -25,15 +25,7 @@ int main() {
 			break;
 		case 2: {//로그인
 
-			string a;
-			string b ;
-			cout << "로그인하세요" << endl;
-			cout << "id:";
-			cin >> a;
-			cout << "pw:";
-			cin >> b;
-
-			string login_value = login(a,b,user_list);
+			string login_value = login(user_list);
 			if (login_value == "admin")
 				cout << "관리자"<<endl;
 			else if (login_value == "로그인성공")

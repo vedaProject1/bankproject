@@ -32,9 +32,14 @@ void join(vector<Person*> &ulist) {//&로 접근해서 수정
 	//Person temp(i, p, n);
 	ulist.push_back(new User(i, p, n));
 }
-string login(string id,string pw,vector<Person*>ulist) {
-
-
+string login(vector<Person*>ulist) {
+	string id;
+	string pw;
+	cout << "로그인하세요" << endl;
+	cout << "id:";
+	cin >> id;
+	cout << "pw:";
+	cin >> pw;
 	vector<Person*>::iterator it;
 	for (it = ulist.begin(); it != ulist.end(); it++)
 	{
