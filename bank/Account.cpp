@@ -25,7 +25,7 @@ Account::Account(long long  account_num) {
 }
 
 long long Account::get_account_num() const {
-	return this->account_num;
+	return account_num;
 }
 
 double Account::get_balance() const {
@@ -33,11 +33,11 @@ double Account::get_balance() const {
 }
 
 void Account::plus(double amount) {
-	this->balance += amount;
+	this->balance +=amount;
 }
 
 void Account::minus(double amount) {
-	this-> balance -= amount;
+	this->balance -= amount;
 }
 
 string Account::get_bank_name_str(BANK_NAME bank_name) const {
