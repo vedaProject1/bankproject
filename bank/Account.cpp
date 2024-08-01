@@ -1,9 +1,19 @@
 #include"Account.h"
 
+Account::Account(long long account_num, BANK_NAME bank_name) {
+	this->account_num = account_num;
+	this->bank_name = bank_name;
+}
+
 Account::Account(long long  account_num, double balance) {
 	this->account_num = account_num;
 	this->balance = balance;
 }
+
+BANK_NAME Account::get_bank_name() const {
+	return bank_name;
+}
+
 Account::~Account() {
 
 }
@@ -29,4 +39,16 @@ void Account::plus(double amount) {
 void Account::minus(double amount) {
 	this-> balance -= amount;
 }
+
+string Account::get_bank_name_str(BANK_NAME bank_name) const {
+	switch (bank_name) {
+		case KAKAO: return "KAKAO";
+		case KOOMIN: return "KOOMIN";
+		case WOORI: return "WOORI";
+		case HANA: return "HANA";
+		default: return "UNKNOWN";
+	}
+}
+
+
 
