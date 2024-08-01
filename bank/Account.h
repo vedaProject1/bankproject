@@ -14,5 +14,7 @@ public:
 	Account(long long account_num);
 	long long get_account_num() const;
 	double get_balance() const;
+	void plus(double amount);
+	void minus(double amount);
 
 };

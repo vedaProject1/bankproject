@@ -21,3 +21,12 @@ long long Account::get_account_num() const {
 double Account::get_balance() const {
 	return this->balance;
 }
+
+void Account::plus(double amount) {
+	this->balance += amount;
+}
+
+void Account::minus(double amount) {
+	this-> balance -= amount;
+}
+
