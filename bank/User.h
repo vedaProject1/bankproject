@@ -1,13 +1,15 @@
 #pragma once
+#include <vector>
+
 #include"Person.h"
 #include"Account.h"
 
 class User :public Person
 {
-	Account user_account;
+	vector<Account> user_account;
 
 public:
-	Account get_user_account();
+	vector<Account>& get_user_account();
 	User (string id, string pw, string name);
 	~User ();
 };
