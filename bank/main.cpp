@@ -6,6 +6,7 @@
 
 using namespace std;
 int main() {
+
 	//vector<Person*> user_list;
 	Admin admin;
 	admin.user_list.push_back(new User("dong", "1234", "asdasd"));
@@ -14,35 +15,36 @@ int main() {
 	do
 	{
 		cout << "====================" << endl;
-		cout << "1. È¸¿ø°¡ÀÔ" << endl;
-		cout << "2. ·Î±×ÀÎ" << endl;
-		cout << "9. Á¾·á" << endl;
-		cout<<"¼±ÅÃ-->";
+		cout << "1. íšŒì›ê°€ì…" << endl;
+		cout << "2. ë¡œê·¸ì¸" << endl;
+		cout << "9. ì¢…ë£Œ" << endl;
+		cout<<"ì„ íƒ-->";
 		cin >> menuNO;
 		switch (menuNO)
 		{
-		case 1://È¸¿ø°¡ÀÔ
+		case 1://íšŒì›ê°€ì…
 			join(admin.user_list);
 			break;
-		case 2: {//·Î±×ÀÎ
+		case 2: {//ë¡œê·¸ì¸
 
 			string login_value = login(admin.user_list);
 			if (login_value == "admin")
 				admin.admin_menu();
-			else if (login_value == "·Î±×ÀÎ¼º°ø")
-				cout << "·Î±×ÀÎ¼º°ø" << endl;
-			else if (login_value == "·Î±×ÀÎ½ÇÆĞ")
-				cout << "·Î±×ÀÎ½ÇÆĞ" << endl;
+			else if (login_value == "ë¡œê·¸ì¸ì„±ê³µ")
+				cout << "ë¡œê·¸ì¸ì„±ê³µ" << endl;
+			else if (login_value == "ë¡œê·¸ì¸ì‹¤íŒ¨")
+				cout << "ë¡œê·¸ì¸ì‹¤íŒ¨" << endl;
 			break;
 		}
 		case 9:
-			cout << "Á¾·á ¼±ÅÃÇÏ¼Ì½À´Ï´Ù." << endl;
+			cout << "ì¢…ë£Œ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤." << endl;
 			break;
 		default:
-			cout << "Àß¸ø ¼±ÅÃÇÏ¼Ì½À´Ï´Ù" << endl;
+			cout << "ì˜ëª» ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤" << endl;
 			break;
 		}
 
-	} while (menuNO != 9);//9ÀÌ¸é Á¾·á´Ï±ñ 9¸é ¹İº¹¹® Å»Ãâ
+	} while (menuNO != 9);//9ì´ë©´ ì¢…ë£Œë‹ˆê¹ 9ë©´ ë°˜ë³µë¬¸ íƒˆì¶œ
 	return 0;
 }
+
