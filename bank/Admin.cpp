@@ -58,6 +58,8 @@ void Admin::search_user() {
 			cout << (*it)->get_name() << "°í°´´ÔÀÇ Á¤º¸ÀÔ´Ï´Ù\n";
 			cout << "°èÁÂ¹øÈ£ :" << (*it)->get_user_account().get_account_num() << endl;
 			cout << "ÀÜ¾× :" << (*it)->get_user_account().get_balance() << endl;
+			
+
 			check = true;
 		}
 	}

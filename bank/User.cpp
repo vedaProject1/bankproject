@@ -99,18 +99,18 @@ Account * User::findAccountByNumber(vector<unique_ptr<Account>>&accounts, long l
 	return nullptr;
 }
 long long  User::generateAccountNumber() {
-	// long long accountNumber = 0;
-	// std::random_device rd;  // 난수 생성용 하드웨어 엔진
-	// std::mt19937 gen(rd()); // Mersenne Twister 엔진 초기화
-	// std::uniform_int_distribution<> dis(0, 9); // 0부터 9까지의 균등 분포
-	//
-	// // 13자리 숫자를 생성
-	// for (int i = 0; i < 13; ++i) {
-	// 	int digit = dis(gen); // 균등 분포에서 난수 추출
-	// 	accountNumber = accountNumber * 10 + digit; // 각 자리의 숫자를 추가
-	// }
+	 long long accountNumber = 0;
+	 std::random_device rd;  // 난수 생성용 하드웨어 엔진
+	 std::mt19937 gen(rd()); // Mersenne Twister 엔진 초기화
+	 std::uniform_int_distribution<> dis(0, 9); // 0부터 9까지의 균등 분포
+	
+	 // 13자리 숫자를 생성
+	 for (int i = 0; i < 13; ++i) {
+	 	int digit = dis(gen); // 균등 분포에서 난수 추출
+	 	accountNumber = accountNumber * 10 + digit; // 각 자리의 숫자를 추가
+	 }
 
-	return 123456;
+	return accountNumber;
 }
 
 void User::show_all_accounts() {

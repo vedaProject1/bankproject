@@ -9,6 +9,7 @@ Account::Account() {
 
 Account::Account(long long account_num, BANK_NAME bank_name) {
 	this->account_num = account_num;
+	this->balance = 0;
 	this->bank_name = bank_name;
 }
 // Account::Account(long a, double b) {
