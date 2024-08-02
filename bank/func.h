@@ -55,6 +55,56 @@ string login(string id, string pw, vector<Person*>ulist) {
 	return "로그인실패";
 }
 
+void after_login(string id, vector<Person*>ulist) {
+
+	auto member =find_if(ulist.begin(),ulist.end(),[id](Person* p) {
+		return p->get_id() == id;
+	});
+	Person *p = *member;
+	cout << p->get_name() << "님 환영합니다" << endl;
+	User* userPtr = dynamic_cast<User*>(p);
+	int number;
+	if(userPtr != nullptr) {
+		do {
+
+			cout << "입금(1) , 출금(2)" << " 잔액조회(3) 로그아웃(4) " << endl;
+			cin >> number;
+			if(number == 1) {
+				double deposit_number;
+				cout << "입금액을 입력 해 주세요";
+				cin >> deposit_number;
+				Account user_account = userPtr->get_user_account();
+
+				userPtr->deposit(user_account.get_account_num(),deposit_number);
+				cout<< "입금에 성공했습니다" << endl;
+
+			}
+			else if(number == 2) {
+				double withdraw_number;
+				cout << "출금액을 입력 해 주세요";
+				cin >> withdraw_number;
+				Account user_account = userPtr->get_user_account();
+				userPtr->withDraw(user_account.get_account_num(),withdraw_number);
+				cout<< "출금에 성공했습니다" << endl;
+			}
+			else if(number == 3) {
+				Account user_account = userPtr->get_user_account();
+				double balance = userPtr->getBalance(user_account.get_account_num());
+				cout << "잔액: " << balance << endl;
+			}
+			else {
+				break;
+			}
+		}while (number != 4);
+
+	}
+
+
+
+}
+
+
+
 
 //void Load() {
 //	FILE* fp;
