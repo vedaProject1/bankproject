@@ -14,6 +14,7 @@ class Account {
 public:
 	Account();
 	Account(long long account_num, BANK_NAME bank_name);
+	Account(long long account_num, BANK_NAME bank_name,double balance);
 	Account(long long account_num, double balance);
 	BANK_NAME get_bank_name() const;
 	// Account(long a, double b);

@@ -5,8 +5,8 @@
 #include"User.h"
 #include"Admin.h"
 #include"Account.h"
-#include<stdio.h>
-#include<stdlib.h>//메모리 관련라이브러리 
+#include<fstream>
+
 using namespace std;
 
 void join(vector<Person*>& ulist) {//&로 접근해서 수정 
@@ -56,11 +56,52 @@ string login(string id, string pw, vector<Person*>ulist) {
 }
 
 
-//void Load() {
-//	FILE* fp;
-//	fp = fopen("C:Users\DREAM12\Desktop\dongha\bankproject\bank", "rb");
-//	if (fp == NULL)
-//	{
-//		fprintf(stderr, "file not found\n");
-//	}
-//}
+void loadFile(std::vector<Person*>& user_list, const std::string& filename) {
+	ifstream inFile(filename);
+	if (!inFile) {
+		std::cerr << "파일을 열 수 없습니다." << std::endl;
+		return;
+	}
+	string id, pw, name, account_num,bank_name;
+	string balance;
+	while (getline(inFile, id) &&
+		getline(inFile, pw) &&
+		getline(inFile, name) &&
+		getline(inFile, account_num) &&
+		getline(inFile, bank_name) &&
+		inFile >> balance) {
+		inFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 줄바꿈 문자 읽기
+
+		User* user = new User(id,pw, name, account_num,balance,bank_name);
+
+
+		user_list.push_back(user);
+	}
+
+	inFile.close();
+	std::cout << "파일로드완료" << std::endl;
+}
+
+
+void saveFile(vector<Person*>user_list, string filename) {
+	
+	ofstream outFile(filename);
+	if (!outFile) {
+		cerr << "파일을 열 수 없습니다." << std::endl;
+		return;
+	}
+
+	vector<Person*>::iterator it;
+	for (it =user_list.begin(); it != user_list.end(); it++)
+	{
+		outFile << (*it)->get_id() << "\n";
+		outFile << (*it)->get_pw() << "\n";
+		outFile << (*it)->get_name() << "\n";
+		outFile << (*it)->get_user_account().get_account_num() << "\n";
+		outFile << (*it)->get_user_account().get_bank_name() << "\n";
+		outFile << (*it)->get_user_account().get_balance() << "\n";
+	}
+	outFile.close();
+	cout << "파일저장완료" << endl;
+}
+

@@ -6,11 +6,14 @@
 
 class User :public Person
 {
-	vector<unique_ptr<Account>> user_account;
+	//vector<unique_ptr<Account>> user_account;
 
 public:
+	vector<unique_ptr<Account>> user_account;
+
 	Account * add_account();
 	User (string id, string pw, string name);
+	User(string id, string pw, string name,string account_num,string balance,string bankname);
 	User() {};
 	~User ();
   

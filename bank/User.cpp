@@ -26,6 +26,8 @@ Account * User::get_user_account(long long account_num) {
 	return nullptr;
 }
 
+
+
 Account User::get_user_account() {
 	return *user_account[0];
 }
@@ -37,6 +39,13 @@ Account User::get_user_account(int order) {
 }
 
 User::User(string id, string pw, string name):Person(id,pw,name){
+
+}
+User::User(string id, string pw, string name, string account_num, string balance, string bankname) :Person(id, pw, name) {
+	Account* temp = new Account(stoll(account_num), ((BANK_NAME)stoi(bankname)), stod(balance));
+
+	this->user_account.push_back(make_unique<Account>(*temp));
+
 
 }
 User::~User() {

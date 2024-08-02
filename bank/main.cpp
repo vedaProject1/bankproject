@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include<vector>
 #include<string>
@@ -8,9 +7,16 @@
 using namespace std;
 int main() {
 
+	//Load();
 	//vector<Person*> user_list;
 	Admin admin;
-	admin.user_list.push_back(new User("dong", "1234", "asdasd"));
+	loadFile(admin.user_list, "C:/Users/DREAM12/Desktop/dongha/bankproject/bank/memo.txt");
+	//Admin admin1;
+
+	//admin.user_list.push_back(new User("dong", "1234", "asdasd"));
+	//admin.user_list = admin1.user_list;
+
+
 	
 	int menuNO;
 	do
@@ -55,6 +61,10 @@ int main() {
 		}
 
 	} while (menuNO != 9);//9이면 종료니깐 9면 반복문 탈출
+
+
+
+	saveFile(admin.user_list, "C:/Users/DREAM12/Desktop/dongha/bankproject/bank/memo.txt");
 	return 0;
 }
 
