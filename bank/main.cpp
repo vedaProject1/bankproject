@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include<vector>
 #include<string>
@@ -26,12 +27,21 @@ int main() {
 			join(admin.user_list);
 			break;
 		case 2: {//로그인
-
-			string login_value = login(admin.user_list);
+			string id;
+			string pw;
+			cout << "로그인하세요" << endl;
+			cout << "id:";
+			cin >> id;
+			cout << "pw:";
+			cin >> pw;
+			string login_value = login(id,pw,admin.user_list);
 			if (login_value == "admin")
 				admin.admin_menu();
 			else if (login_value == "로그인성공")
 				cout << "로그인성공" << endl;
+
+
+
 			else if (login_value == "로그인실패")
 				cout << "로그인실패" << endl;
 			break;

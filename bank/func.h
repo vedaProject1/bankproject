@@ -5,9 +5,11 @@
 #include"User.h"
 #include"Admin.h"
 #include"Account.h"
+#include<stdio.h>
+#include<stdlib.h>//메모리 관련라이브러리 
 using namespace std;
 
-void join(vector<Person*> &ulist) {//&로 접근해서 수정 
+void join(vector<Person*>& ulist) {//&로 접근해서 수정 
 	cout << "회원가입 시작\n";
 	string i, p, n;
 	vector<Person*>::iterator it;
@@ -38,14 +40,7 @@ void join(vector<Person*> &ulist) {//&로 접근해서 수정
 	ulist.push_back(user);
 
 }
-string login(vector<Person*>ulist) {
-	string id;
-	string pw;
-	cout << "로그인하세요" << endl;
-	cout << "id:";
-	cin >> id;
-	cout << "pw:";
-	cin >> pw;
+string login(string id, string pw, vector<Person*>ulist) {
 	vector<Person*>::iterator it;
 	for (it = ulist.begin(); it != ulist.end(); it++)
 	{
@@ -55,7 +50,17 @@ string login(vector<Person*>ulist) {
 		{
 			return "로그인성공";
 		}
-	
+
 	}
 	return "로그인실패";
 }
+
+
+//void Load() {
+//	FILE* fp;
+//	fp = fopen("C:Users\DREAM12\Desktop\dongha\bankproject\bank", "rb");
+//	if (fp == NULL)
+//	{
+//		fprintf(stderr, "file not found\n");
+//	}
+//}
