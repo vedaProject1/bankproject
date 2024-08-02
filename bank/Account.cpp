@@ -1,5 +1,8 @@
 #include"Account.h"
-
+Account::Account() {
+	this->account_num = 0;
+	this->balance =0 ;
+}
 Account::Account(long a, double b) {
 	this->account_num = a;
 	this->balance = b;
