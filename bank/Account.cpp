@@ -2,15 +2,12 @@
 
 Account::Account(long long account_num, BANK_NAME bank_name) {
 	this->account_num = account_num;
-	this->bank_name = bank_name; 
-Account::Account() {
-	this->account_num = 0;
-	this->balance =0 ;
+	this->bank_name = bank_name;
 }
-Account::Account(long a, double b) {
-	this->account_num = a;
-	this->balance = b;
-}
+// Account::Account(long a, double b) {
+// 	this->account_num = a;
+// 	this->balance = b;
+// }
 
 Account::Account(long long  account_num, double balance) {
 	this->account_num = account_num;
