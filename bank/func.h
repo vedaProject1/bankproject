@@ -28,9 +28,15 @@ void join(vector<Person*> &ulist) {//&로 접근해서 수정
 	cin >> p;
 	cout << "name:";
 	cin >> n;
+
+
 	cout << "회원가입이 완료되었습니다\n";
 	//Person temp(i, p, n);
-	ulist.push_back(new User(i, p, n));
+	User* user = new User(i, p, n);
+	user->add_account();
+	//ulist.push_back(new User(i, p, n));
+	ulist.push_back(user);
+
 }
 string login(vector<Person*>ulist) {
 	string id;
