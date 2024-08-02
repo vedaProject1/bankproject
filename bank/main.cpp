@@ -10,7 +10,7 @@ int main() {
 	//Load();
 	//vector<Person*> user_list;
 	Admin admin;
-	loadFile(admin.user_list, "C:/Users/DREAM12/Desktop/dongha/bankproject/bank/memo.txt");
+	loadFile(admin.user_list, "./memo.txt");
 	//Admin admin1;
 
 	//admin.user_list.push_back(new User("dong", "1234", "asdasd"));
@@ -64,7 +64,7 @@ int main() {
 
 
 
-	saveFile(admin.user_list, "C:/Users/DREAM12/Desktop/dongha/bankproject/bank/memo.txt");
+	saveFile(admin.user_list, "./memo.txt");
 	return 0;
 }
 
