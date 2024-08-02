@@ -18,6 +18,8 @@ public:
 	void withDraw(long long  account_num , long amount);
 	double getBalance( long long account_num);
 	Account* get_user_account(long long account_num);
+	Account get_user_account() override;
+	Account get_user_account(int order);
 	long long generateAccountNumber();
 	void show_all_accounts();
 
