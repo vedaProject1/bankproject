@@ -28,4 +28,3 @@ public:
 	string get_bank_name_str(BANK_NAME bank_name) const;
 };
 
-};
