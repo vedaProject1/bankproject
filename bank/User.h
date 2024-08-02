@@ -6,11 +6,14 @@
 
 class User :public Person
 {
-	vector<unique_ptr<Account>> user_account;
+	//vector<unique_ptr<Account>> user_account;
 
 public:
+	vector<unique_ptr<Account>> user_account;
+
 	Account * add_account();
 	User (string id, string pw, string name);
+	User(string id, string pw, string name,string account_num,string balance,string bankname);
 	User() {};
 	~User ();
   
@@ -18,6 +21,8 @@ public:
 	void withDraw(long long  account_num , long amount);
 	double getBalance( long long account_num);
 	Account* get_user_account(long long account_num);
+	Account get_user_account() override;
+	Account get_user_account(int order);
 	long long generateAccountNumber();
 	void show_all_accounts();
 

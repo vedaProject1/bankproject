@@ -1,7 +1,7 @@
 #include"User.h"
 
 #include <random>
-#include <__random/random_device.h>
+// #include <__random/random_device.h>
 
 
 Account* User::add_account() {
@@ -25,7 +25,27 @@ Account * User::get_user_account(long long account_num) {
 	}
 	return nullptr;
 }
+
+
+
+Account User::get_user_account() {
+	return *user_account[0];
+}
+
+Account User::get_user_account(int order) {
+
+	if(user_account.size() <= order)  return NULL;
+	return *user_account.at(order);
+}
+
 User::User(string id, string pw, string name):Person(id,pw,name){
+
+}
+User::User(string id, string pw, string name, string account_num, string balance, string bankname) :Person(id, pw, name) {
+	Account* temp = new Account(stoll(account_num), ((BANK_NAME)stoi(bankname)), stod(balance));
+
+	this->user_account.push_back(make_unique<Account>(*temp));
+
 
 }
 User::~User() {
@@ -88,16 +108,16 @@ Account * User::findAccountByNumber(vector<unique_ptr<Account>>&accounts, long l
 	return nullptr;
 }
 long long  User::generateAccountNumber() {
-	long long accountNumber = 0;
-	std::random_device rd;  // 난수 생성용 하드웨어 엔진
-	std::mt19937 gen(rd()); // Mersenne Twister 엔진 초기화
-	std::uniform_int_distribution<> dis(0, 9); // 0부터 9까지의 균등 분포
-
-	// 13자리 숫자를 생성
-	for (int i = 0; i < 13; ++i) {
-		int digit = dis(gen); // 균등 분포에서 난수 추출
-		accountNumber = accountNumber * 10 + digit; // 각 자리의 숫자를 추가
-	}
+	 long long accountNumber = 0;
+	 std::random_device rd;  // 난수 생성용 하드웨어 엔진
+	 std::mt19937 gen(rd()); // Mersenne Twister 엔진 초기화
+	 std::uniform_int_distribution<> dis(0, 9); // 0부터 9까지의 균등 분포
+	
+	 // 13자리 숫자를 생성
+	 for (int i = 0; i < 13; ++i) {
+	 	int digit = dis(gen); // 균등 분포에서 난수 추출
+	 	accountNumber = accountNumber * 10 + digit; // 각 자리의 숫자를 추가
+	 }
 
 	return accountNumber;
 }

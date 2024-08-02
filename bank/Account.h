@@ -4,7 +4,7 @@
 using namespace std;
 
 enum BANK_NAME {
-	KAKAO,KOOMIN,WOORI,HANA
+	KAKAO, KOOMIN, WOORI, HANA
 };
 class Account {
 	long long  account_num;
@@ -12,11 +12,13 @@ class Account {
 	BANK_NAME  bank_name;
 
 public:
-	Account() {};
+	Account();
 	Account(long long account_num, BANK_NAME bank_name);
+	Account(long long account_num, BANK_NAME bank_name,double balance);
 	Account(long long account_num, double balance);
 	BANK_NAME get_bank_name() const;
-	Account(long a, double b);
+	// Account(long a, double b);
+
 
 	~Account();
 	Account(long long account_num);
@@ -27,4 +29,3 @@ public:
 	string get_bank_name_str(BANK_NAME bank_name) const;
 };
 
-};

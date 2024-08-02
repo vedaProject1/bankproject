@@ -7,44 +7,64 @@
 using namespace std;
 int main() {
 
+	//Load();
 	//vector<Person*> user_list;
 	Admin admin;
-	admin.user_list.push_back(new User("dong", "1234", "asdasd"));
+	loadFile(admin.user_list, "C:/Users/DREAM12/Desktop/dongha/bankproject/bank/memo.txt");
+	//Admin admin1;
+
+	//admin.user_list.push_back(new User("dong", "1234", "asdasd"));
+	//admin.user_list = admin1.user_list;
+
+
 	
 	int menuNO;
 	do
 	{
 		cout << "====================" << endl;
-		cout << "1. íšŒì›ê°€ì…" << endl;
-		cout << "2. ë¡œê·¸ì¸" << endl;
-		cout << "9. ì¢…ë£Œ" << endl;
-		cout<<"ì„ íƒ-->";
+		cout << "1. È¸¿ø°¡ÀÔ" << endl;
+		cout << "2. ·Î±×ÀÎ" << endl;
+		cout << "9. Á¾·á" << endl;
+		cout<<"¼±ÅÃ-->";
 		cin >> menuNO;
 		switch (menuNO)
 		{
-		case 1://íšŒì›ê°€ì…
+		case 1://È¸¿ø°¡ÀÔ
 			join(admin.user_list);
 			break;
-		case 2: {//ë¡œê·¸ì¸
-
-			string login_value = login(admin.user_list);
+		case 2: {//·Î±×ÀÎ
+			string id;
+			string pw;
+			cout << "·Î±×ÀÎÇÏ¼¼¿ä" << endl;
+			cout << "id:";
+			cin >> id;
+			cout << "pw:";
+			cin >> pw;
+			string login_value = login(id,pw,admin.user_list);
 			if (login_value == "admin")
 				admin.admin_menu();
-			else if (login_value == "ë¡œê·¸ì¸ì„±ê³µ")
-				cout << "ë¡œê·¸ì¸ì„±ê³µ" << endl;
-			else if (login_value == "ë¡œê·¸ì¸ì‹¤íŒ¨")
-				cout << "ë¡œê·¸ì¸ì‹¤íŒ¨" << endl;
+			else if (login_value == "·Î±×ÀÎ¼º°ø")
+				cout << "·Î±×ÀÎ¼º°ø" << endl;
+
+
+
+			else if (login_value == "·Î±×ÀÎ½ÇÆĞ")
+				cout << "·Î±×ÀÎ½ÇÆĞ" << endl;
 			break;
 		}
 		case 9:
-			cout << "ì¢…ë£Œ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤." << endl;
+			cout << "Á¾·á ¼±ÅÃÇÏ¼Ì½À´Ï´Ù." << endl;
 			break;
 		default:
-			cout << "ì˜ëª» ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤" << endl;
+			cout << "Àß¸ø ¼±ÅÃÇÏ¼Ì½À´Ï´Ù" << endl;
 			break;
 		}
 
-	} while (menuNO != 9);//9ì´ë©´ ì¢…ë£Œë‹ˆê¹ 9ë©´ ë°˜ë³µë¬¸ íƒˆì¶œ
+	} while (menuNO != 9);//9ÀÌ¸é Á¾·á´Ï±ñ 9¸é ¹İº¹¹® Å»Ãâ
+
+
+
+	saveFile(admin.user_list, "C:/Users/DREAM12/Desktop/dongha/bankproject/bank/memo.txt");
 	return 0;
 }
 
