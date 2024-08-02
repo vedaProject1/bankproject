@@ -1,38 +1,50 @@
 #include<iostream>
 #include<vector>
+#include<string>
 #include"Person.h"
-#include"User.h"
-#include"Admin.h"
-#include"Account.h"
+#include"func.h"
+
 using namespace std;
 int main() {
 
-	unique_ptr<User> p = make_unique<User>("id","pw","name");
+	//vector<Person*> user_list;
+	Admin admin;
+	admin.user_list.push_back(new User("dong", "1234", "asdasd"));
+	
+	int menuNO;
+	do
+	{
+		cout << "====================" << endl;
+		cout << "1. 회원가입" << endl;
+		cout << "2. 로그인" << endl;
+		cout << "9. 종료" << endl;
+		cout<<"선택-->";
+		cin >> menuNO;
+		switch (menuNO)
+		{
+		case 1://회원가입
+			join(admin.user_list);
+			break;
+		case 2: {//로그인
 
-	User * p2 = new User("hello","test","name");
-	p2->deposit(-1,100);
+			string login_value = login(admin.user_list);
+			if (login_value == "admin")
+				admin.admin_menu();
+			else if (login_value == "로그인성공")
+				cout << "로그인성공" << endl;
+			else if (login_value == "로그인실패")
+				cout << "로그인실패" << endl;
+			break;
+		}
+		case 9:
+			cout << "종료 선택하셨습니다." << endl;
+			break;
+		default:
+			cout << "잘못 선택하셨습니다" << endl;
+			break;
+		}
 
-	Account * account1 = p->add_account();
-	Account * account2 = p->add_account();
-
-	cout << "account 1�Ա�"<< endl;
-	p->deposit(account1->get_account_num(),300);
-	cout << "account �ܰ�" <<endl;
-	cout << p->getBalance(account1->get_account_num()) << endl;
-
-	cout << "�Ա��� �ܰ�" <<endl;
-	cout << p->getBalance(account2->get_account_num());
-	cout << "account 2 �Ա� " << endl;
-	p->deposit(account2->get_account_num(),500);
-	cout << "�ܰ� :" << p->get_user_account(account2->get_account_num())->get_balance()<<endl;
-	p->withDraw(account2->get_account_num(),500);
-
-	cout << "�ܰ� :" << p->get_user_account(account2->get_account_num())->get_balance()<<endl;
-	cout << p->getBalance(account2->get_account_num())<<endl;
-
-
-
-
-
-
+	} while (menuNO != 9);//9이면 종료니깐 9면 반복문 탈출
+	return 0;
 }
+

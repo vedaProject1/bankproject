@@ -11,7 +11,9 @@ class User :public Person
 public:
 	Account * add_account();
 	User (string id, string pw, string name);
+	User() {};
 	~User ();
+  
 	void deposit( long long account_num, long amount);
 	void withDraw(long long  account_num , long amount);
 	double getBalance( long long account_num);
@@ -21,5 +23,6 @@ public:
 
 private:
 	Account* findAccountByNumber(vector<unique_ptr<Account>>& accounts, long long account_num);
+
 };
 
