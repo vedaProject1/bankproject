@@ -26,6 +26,19 @@
     <string>login</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>290</y>
+     <width>100</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>
@@ -38,6 +51,22 @@
     <hint type="sourcelabel">
      <x>367</x>
      <y>221</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>Widget</receiver>
+   <slot>happy()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>389</x>
+     <y>305</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
