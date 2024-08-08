@@ -19,5 +19,8 @@ public:
 
 private:
     Ui::Widget *ui;
+
+public slots:
+    void happy();
 };
 #endif // WIDGET_H
