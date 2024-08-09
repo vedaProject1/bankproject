@@ -62,7 +62,7 @@
     <string>00000000</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="withDrawButton">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -188,9 +188,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>withDrawButton</sender>
+   <signal>clicked()</signal>
+   <receiver>UserAccountDisplay</receiver>
+   <slot>withdraw_s()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>229</x>
+     <y>325</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>262</x>
+     <y>196</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>deposit_s()</slot>
   <slot>on_item_clicked(QModelIndex)</slot>
+  <slot>withdraw_s()</slot>
  </slots>
 </ui>

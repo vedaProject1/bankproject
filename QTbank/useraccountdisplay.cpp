@@ -53,6 +53,13 @@ void UserAccountDisplay::deposit_s() {
 }
 
 void UserAccountDisplay::withdraw_s() {
+
+    int amount =QInputDialog::getInt (this,"Input withDraw Amount", "Input withDraw", QLineEdit::Normal,0);
+    long long account_number = ui->userAccountNumber->text().toLongLong();
+    qDebug() << account_number;
+    user->withDraw(account_number,amount);
+    qDebug() << "withDraw success";
+    ui->userBalance->setText(QString::number(user->getBalance(account_number)));
 }
 
 void UserAccountDisplay::on_item_clicked(const QModelIndex &index) {
