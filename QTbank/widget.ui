@@ -108,7 +108,7 @@
    <sender>registerButton</sender>
    <signal>clicked()</signal>
    <receiver>Widget</receiver>
-   <slot>registerUser()</slot>
+   <slot>showRegisterWindow()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>85</x>
@@ -139,6 +139,6 @@
  </connections>
  <slots>
   <slot>login()</slot>
-  <slot>registerUser()</slot>
+  <slot>showRegisterWindow()</slot>
  </slots>
 </ui>

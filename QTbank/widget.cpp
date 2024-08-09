@@ -1,5 +1,6 @@
 #include "widget.h"
 #include "./ui_widget.h"
+#include "userregister.h"
 
 
 Widget::Widget(QWidget *parent)
@@ -18,7 +19,10 @@ void Widget::login() {
     qDebug() << "userLogin";
 }
 
-void Widget::registerUser() {
+void Widget::showRegisterWindow() {
+
+    userRegister * regi = new userRegister();
+    regi->show();
     qDebug() << "register";
 }
 

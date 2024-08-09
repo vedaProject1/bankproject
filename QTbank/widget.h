@@ -22,6 +22,6 @@ private:
 
 public slots:
     void login();
-    void registerUser();
+    void showRegisterWindow();
 };
 #endif // WIDGET_H
