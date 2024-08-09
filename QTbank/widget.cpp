@@ -37,16 +37,15 @@ void Widget::login_s() {
 
 
     string login_result_s=login(id.toStdString(),pw.toStdString(), admin.user_list);//Qstring에 string을 넣어줘서 문제가 생김
-
     QString login_result_qs=QString::fromStdString(login_result_s);
     qDebug()<<login_result_qs;
 
-
-
-
-
-    //UserAccountDisplay* userAccountDisPlay =new UserAccountDisplay();
-    //userAccountDisPlay->show();
+    //유저를 셋팅해서 보여줌
+    // User *user = new User("hello","pass","userName");
+    // user->add_account();
+    // UserAccountDisplay* userAccountDisPlay =new UserAccountDisplay();
+    // userAccountDisPlay->set_user(*user);
+    // userAccountDisPlay->show();
 }
 
 void Widget::showRegisterWindow() {
