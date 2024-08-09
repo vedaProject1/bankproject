@@ -14,7 +14,11 @@ Widget::~Widget()
     delete ui;
 }
 
-void Widget::happy(){
-
-    qDebug("hello");
+void Widget::login() {
+    qDebug() << "userLogin";
 }
+
+void Widget::registerUser() {
+    qDebug() << "register";
+}
+

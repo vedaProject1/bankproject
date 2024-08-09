@@ -21,6 +21,7 @@ private:
     Ui::Widget *ui;
 
 public slots:
-    void happy();
+    void login();
+    void registerUser();
 };
 #endif // WIDGET_H
