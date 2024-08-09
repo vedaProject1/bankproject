@@ -7,6 +7,8 @@
 
 #include <QWidget>
 #include "User.h"
+#include <QInputDialog>
+#include <QStringListModel>
 
 
 QT_BEGIN_NAMESPACE
@@ -15,13 +17,21 @@ QT_END_NAMESPACE
 
 class UserAccountDisplay : public QWidget {
 Q_OBJECT
-
+    User* user;
+    QStringListModel *model;
 public:
     explicit UserAccountDisplay(QWidget *parent = nullptr);
-    ~UserAccountDisplay() override;
-    void setUserInfo(User user);
 
 void set_user(User& user);
+
+
+~UserAccountDisplay() override;
+
+public slots:
+    void deposit_s();
+    void withdraw_s();
+    void on_item_clicked(const QModelIndex &index);
+
 private:
     Ui::UserAccountDisplay *ui;
 };

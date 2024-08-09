@@ -38,8 +38,27 @@ UserAccountDisplay::~UserAccountDisplay() {
     delete ui;
 }
 
-void UserAccountDisplay::setUserInfo(User user) {
-    this->ui->userName->setText(QString::fromStdString(user.get_name()));
-    this->ui->userBalance->setText(QString::number(user.get_user_account().get_balance()));
-    this->ui->userAccountNumber -> setText(QString::number(user.get_user_account().get_account_num()));
+
+
+
+void UserAccountDisplay::deposit_s() {
+    int amount =QInputDialog::getInt (this,"Input Deposit Amount", "Input Deposit Amount", QLineEdit::Normal,0);
+    long long account_number = ui->userAccountNumber->text().toLongLong();
+    qDebug() << account_number;
+    user->deposit(account_number,amount);
+    qDebug() << "deposit success";
+    ui->userBalance->setText(QString::number(user->getBalance(account_number)));
+
+
+}
+
+void UserAccountDisplay::withdraw_s() {
+}
+
+void UserAccountDisplay::on_item_clicked(const QModelIndex &index) {
+    QString itemText = model->data(index, Qt::DisplayRole).toString();
+        // "Item 2"가 클릭되었을 때 수행할 작업
+        qDebug() << itemText;
+        // 여기에 원하는 작업을 추가하세요
+
 }
