@@ -35,11 +35,12 @@ void join(vector<Person*>& ulist) {//&로 접근해서 수정
 }
 string login(string id, string pw, vector<Person*>ulist) {
     vector<Person*>::iterator it;
+    if (id == "admin" && pw == "1234")
+        return "admin";
+
     for (it = ulist.begin(); it != ulist.end(); it++)
     {
-        if (id == "admin" && pw == "1234")
-            return "admin";
-        else if (id == (*it)->get_id() && pw == (*it)->get_pw())
+        if (id == (*it)->get_id() && pw == (*it)->get_pw())
         {
             //return "로그인성공";
             return "loginsucces";
