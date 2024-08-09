@@ -6,8 +6,8 @@
 
 Account* User::add_account() {
 	long long new_account_number = generateAccountNumber();
-	cout << "계좌를 만들 은행 번호를 입력하세요 "<<endl;
-	cout<< "KAKAO : 0,KOOMIN : 1,WOORI : 2,HANA : 3" << endl;
+    //cout << "계좌를 만들 은행 번호를 입력하세요 "<<endl;
+    //cout<< "KAKAO : 0,KOOMIN : 1,WOORI : 2,HANA : 3" << endl;
 	int bank_id;
 	cin >> bank_id;
 	user_account.push_back(make_unique<Account>(new_account_number,static_cast<BANK_NAME>(bank_id)));
@@ -56,11 +56,11 @@ User::~User() {
 void User::deposit(long long account_num, long amount) {
 	Account * user_account = get_user_account(account_num);
 	if(user_account == nullptr) {
-		cout << "해당 계좌가 없습니다" << endl;
+        //cout << "해당 계좌가 없습니다" << endl;
 		return;
 	}
 	if(amount<=0) {
-		cout << "입금액이 0보다 적습니다"<< endl;
+        //cout << "입금액이 0보다 적습니다"<< endl;
 	}
 	user_account->plus(amount);
 }
@@ -70,15 +70,15 @@ void User::withDraw(long long account_num, long amount) {
 
 	Account * user_account = get_user_account(account_num);
 	if(user_account == nullptr) {
-		cout << "해당 사용자가 없습니다" << endl;
+        // << "해당 사용자가 없습니다" << endl;
 		return;
 	}
 	if(amount<=0) {
-		cout << "출금액이 0보다 적습니다"<< endl;
+        //cout << "출금액이 0보다 적습니다"<< endl;
 		return;
 	}
 	if(user_account->get_balance() - amount <0) {
-		cout << "잔액이 부족합니다" << endl;
+        //cout << "잔액이 부족합니다" << endl;
 		return;
 	}
 
@@ -90,7 +90,7 @@ double User::getBalance( long long account_num) {
 
 	Account * user_account = get_user_account(account_num);
 	if(user_account == nullptr) {
-		cout << "해당 사용자가 없습니다" << endl;
+        //cout << "해당 사용자가 없습니다" << endl;
 		return -1;
 	}
 	return user_account->get_balance();
@@ -127,7 +127,7 @@ void User::show_all_accounts() {
 	for(int i =0; i<user_account.size(); i++) {
 		Account * account = user_account[i].get();
 		BANK_NAME bank_name = account->get_bank_name();
-		cout<<"은행명" << account->get_bank_name_str(bank_name) << endl;
+        //cout<<"은행명" << account->get_bank_name_str(bank_name) << endl;
 
 	}
 }

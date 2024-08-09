@@ -9,30 +9,30 @@
 
 using namespace std;
 
-void join(vector<Person*>& ulist) {//&로 접근해서 수정 
-	cout << "회원가입 시작\n";
+void join(vector<Person*>& ulist) {//&로 접근해서 수정
+    //cout << "회원가입 시작\n";
 	string i, p, n;
 	vector<Person*>::iterator it;
 	while (1) {
-		cout << "id:";
-		cin >> i;
+        //cout << "id:";
+        //cin >> i;
 		bool check = true;
 		for (it = ulist.begin(); it != ulist.end(); it++)
 		{
 			if (i == (*it)->get_id() || i == "admin") {
-				cout << "이미 사용중인 id입니다\n";
+                //cout << "이미 사용중인 id입니다\n";
 				check = false;
 			}
 		}
 		if (check == true)break;
 	}
-	cout << "pw:";
-	cin >> p;
-	cout << "name:";
-	cin >> n;
+    //cout << "pw:";
+    //cin >> p;
+    //cout << "name:";
+    //cin >> n;
 
 
-	cout << "회원가입이 완료되었습니다\n";
+    //cout << "회원가입이 완료되었습니다\n";
 	//Person temp(i, p, n);
 	User* user = new User(i, p, n);
 	user->add_account();
@@ -67,30 +67,30 @@ void after_login(string id, vector<Person*>ulist) {
 	if(userPtr != nullptr) {
 		do {
 
-			cout << "입금(1) , 출금(2)" << " 잔액조회(3) 로그아웃(4) " << endl;
-			cin >> number;
+            //cout << "입금(1) , 출금(2)" << " 잔액조회(3) 로그아웃(4) " << endl;
+            //cin >> number;
 			if(number == 1) {
 				double deposit_number;
-				cout << "입금액을 입력 해 주세요";
-				cin >> deposit_number;
+                //cout << "입금액을 입력 해 주세요";
+                //cin >> deposit_number;
 				Account user_account = userPtr->get_user_account();
 
 				userPtr->deposit(user_account.get_account_num(),deposit_number);
-				cout<< "입금에 성공했습니다" << endl;
+                //cout<< "입금에 성공했습니다" << endl;
 
 			}
 			else if(number == 2) {
 				double withdraw_number;
-				cout << "출금액을 입력 해 주세요";
-				cin >> withdraw_number;
+                //cout << "출금액을 입력 해 주세요";
+                //cin >> withdraw_number;
 				Account user_account = userPtr->get_user_account();
 				userPtr->withDraw(user_account.get_account_num(),withdraw_number);
-				cout<< "출금에 성공했습니다" << endl;
+                //cout<< "출금에 성공했습니다" << endl;
 			}
 			else if(number == 3) {
 				Account user_account = userPtr->get_user_account();
 				double balance = userPtr->getBalance(user_account.get_account_num());
-				cout << "잔액: " << balance << endl;
+                // << "잔액: " << balance << endl;
 			}
 			else {
 				break;

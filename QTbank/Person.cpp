@@ -15,3 +15,5 @@ Person::Person(string id, string pw, string name) {
 }
 Person::~Person() {
 }
+
+Person::Person(){}
