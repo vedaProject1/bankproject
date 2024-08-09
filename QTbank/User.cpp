@@ -100,7 +100,7 @@ double User::getBalance( long long account_num) {
 
 
 
-Account * User::findAccountByNumber(vector<unique_ptr<Account>>&accounts, long long account_num) {
+Account * User::findAccountByNumber(vector<shared_ptr<Account>>&accounts, long long account_num) {
 
 	for(int i = 0; i<accounts.size();i++) {
 		if(accounts[i]->get_account_num() == account_num) return accounts[i].get();
