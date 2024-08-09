@@ -24,7 +24,7 @@ private:
     Ui::Widget *ui;
 
 public slots:
-    void login();
+    void login_s();
     void showRegisterWindow();
 
 };

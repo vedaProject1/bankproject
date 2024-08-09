@@ -42,7 +42,7 @@ string login(string id, string pw, vector<Person*>ulist) {
         else if (id == (*it)->get_id() && pw == (*it)->get_pw())
         {
             //return "로그인성공";
-            //return "loginsucces";
+            return "loginsucces";
         }
 
     }
