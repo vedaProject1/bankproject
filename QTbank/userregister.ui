@@ -6,80 +6,103 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>277</width>
-    <height>274</height>
+    <width>405</width>
+    <height>344</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>회원가입</string>
   </property>
-  <widget class="QPushButton" name="registerButton">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>180</y>
-     <width>100</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>회원가입</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="ID">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>30</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="PW">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>100</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="echoMode">
-    <enum>QLineEdit::EchoMode::Password</enum>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QWidget" name="formLayoutWidget">
    <property name="geometry">
     <rect>
      <x>30</x>
      <y>30</y>
-     <width>58</width>
-     <height>31</height>
+     <width>341</width>
+     <height>281</height>
     </rect>
    </property>
-   <property name="text">
-    <string>ID</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>110</y>
-     <width>58</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>PW</string>
-   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lineEdit_id">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="lineEdit_name">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::EchoMode::Password</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEdit_pw"/>
+    </item>
+    <item row="4" column="1">
+     <widget class="QPushButton" name="registerButton">
+      <property name="text">
+       <string>회원가입</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>PW</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QComboBox" name="ComboBox_bank">
+      <item>
+       <property name="text">
+        <string>1. Kakao</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2. KookmiIn</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>3. Woori</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>4. Hana</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Select Bank</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

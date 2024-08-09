@@ -6,14 +6,15 @@
 #include"func.h"
 #include "Person.h"
 #include "User.h"
-
+#include<vector>
 
 Admin admin;
 
 int main(int argc, char *argv[])
 {
-
     loadFile(admin.user_list, "./memo.txt");
+
+
     QApplication a(argc, argv);
     Widget w;
     w.show();
