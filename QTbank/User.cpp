@@ -132,5 +132,9 @@ void User::show_all_accounts() {
 	}
 }
 
+vector<shared_ptr<Account>> User::get_all_accounts() {
+	return user_account;
+}
+
 
 

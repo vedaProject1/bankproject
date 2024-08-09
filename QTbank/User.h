@@ -25,6 +25,7 @@ public:
 	Account get_user_account(int order);
 	long long generateAccountNumber();
 	void show_all_accounts();
+	vector<shared_ptr<Account>> get_all_accounts();
 
 private:
 	Account* findAccountByNumber(vector<shared_ptr<Account>>& accounts, long long account_num);
