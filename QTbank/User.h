@@ -9,7 +9,7 @@ class User :public Person
 	//vector<unique_ptr<Account>> user_account;
 
 public:
-	vector<unique_ptr<Account>> user_account;
+	vector<shared_ptr<Account>> user_account;
 
 	Account * add_account();
 	User (string id, string pw, string name);
@@ -27,7 +27,7 @@ public:
 	void show_all_accounts();
 
 private:
-	Account* findAccountByNumber(vector<unique_ptr<Account>>& accounts, long long account_num);
+	Account* findAccountByNumber(vector<shared_ptr<Account>>& accounts, long long account_num);
 
 };
 

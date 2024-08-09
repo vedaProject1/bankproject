@@ -17,7 +17,7 @@ Account* User::add_account() {
 Account * User::get_user_account(long long account_num) {
 
 	auto it = std::find_if(user_account.begin(), user_account.end(),
-	   [account_num](const std::unique_ptr<Account>& account) {
+	   [account_num](const std::shared_ptr<Account>& account) {
 		   return account->get_account_num() == account_num;
 	   });
 	if(it != user_account.end()) {
@@ -100,7 +100,7 @@ double User::getBalance( long long account_num) {
 
 
 
-Account * User::findAccountByNumber(vector<unique_ptr<Account>>&accounts, long long account_num) {
+Account * User::findAccountByNumber(vector<shared_ptr<Account>>&accounts, long long account_num) {
 
 	for(int i = 0; i<accounts.size();i++) {
 		if(accounts[i]->get_account_num() == account_num) return accounts[i].get();
