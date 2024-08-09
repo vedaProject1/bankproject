@@ -63,7 +63,7 @@ void Admin::search_user() {
 			check = true;
 		}
 	}
-	if (check == false)cout << "존재하지 않는 이름 입니다\n";
+    if (check == false)cout << "no user";
 }
 
 

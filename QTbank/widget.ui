@@ -51,7 +51,7 @@
      <string>ID</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="lineEdit_id">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -87,7 +87,7 @@
      <string>회원가입</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="lineEdit_pw">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -124,7 +124,7 @@
    <sender>loginButton</sender>
    <signal>clicked()</signal>
    <receiver>Widget</receiver>
-   <slot>login()</slot>
+   <slot>login_s()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>205</x>
@@ -138,7 +138,7 @@
   </connection>
  </connections>
  <slots>
-  <slot>login()</slot>
+  <slot>login_s()</slot>
   <slot>showRegisterWindow()</slot>
  </slots>
 </ui>
