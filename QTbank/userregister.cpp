@@ -55,7 +55,7 @@ void userRegister::registerUser() {
     }
     if (check == true){
         User* user = new User(i, p, n);
-        user->add_account();
+        user->add_account(bankIndex);
         admin.user_list.push_back(user);
         QMessageBox::question(this,"Complete","join complete",QMessageBox::Yes);
         qDebug() << "join complete\n";

@@ -12,6 +12,7 @@ public:
 	vector<shared_ptr<Account>> user_account;
 
 	Account * add_account();
+    Account * add_account(int bank_id);
 	User (string id, string pw, string name);
 	User(string id, string pw, string name,string account_num,string balance,string bankname);
 	User() {};

@@ -40,7 +40,7 @@ void Widget::login_s() {
     QString login_result_qs=QString::fromStdString(login_result_s);
     qDebug()<<login_result_qs;
 
-    //유저를 셋팅해서 보여줌
+    // //유저를 셋팅해서 보여줌
     // User *user = new User("hello","pass","userName");
     // user->add_account();
     // UserAccountDisplay* userAccountDisPlay =new UserAccountDisplay();
