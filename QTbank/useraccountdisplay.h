@@ -20,6 +20,8 @@ public:
     explicit UserAccountDisplay(QWidget *parent = nullptr);
     ~UserAccountDisplay() override;
     void setUserInfo(User user);
+
+void set_user(User& user);
 private:
     Ui::UserAccountDisplay *ui;
 };
