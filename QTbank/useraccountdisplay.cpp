@@ -16,3 +16,9 @@ UserAccountDisplay::UserAccountDisplay(QWidget *parent) :
 UserAccountDisplay::~UserAccountDisplay() {
     delete ui;
 }
+
+void UserAccountDisplay::setUserInfo(User user) {
+    this->ui->userName->setText(QString::fromStdString(user.get_name()));
+    this->ui->userBalance->setText(QString::number(user.get_user_account().get_balance()));
+    this->ui->userAccountNumber -> setText(QString::number(user.get_user_account().get_account_num()));
+}

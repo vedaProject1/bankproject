@@ -6,6 +6,7 @@
 #define USERACCOUNTDISPLAY_H
 
 #include <QWidget>
+#include "User.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -18,7 +19,7 @@ Q_OBJECT
 public:
     explicit UserAccountDisplay(QWidget *parent = nullptr);
     ~UserAccountDisplay() override;
-
+    void setUserInfo(User user);
 private:
     Ui::UserAccountDisplay *ui;
 };
