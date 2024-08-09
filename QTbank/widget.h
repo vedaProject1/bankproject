@@ -3,6 +3,9 @@
 
 #include <QWidget>
 
+
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class Widget;
@@ -23,5 +26,6 @@ private:
 public slots:
     void login();
     void showRegisterWindow();
+
 };
 #endif // WIDGET_H

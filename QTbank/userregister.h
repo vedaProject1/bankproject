@@ -6,6 +6,9 @@
 #define USERREGISTER_H
 
 #include <QWidget>
+#include "Account.h"
+#include "Person.h"
+
 
 
 QT_BEGIN_NAMESPACE

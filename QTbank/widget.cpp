@@ -4,6 +4,11 @@
 #include "useraccountdisplay.h"
 #include "userregister.h"
 
+#include"Admin.h"
+#include"func.h"
+
+
+
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -19,7 +24,10 @@ Widget::~Widget()
     delete ui;
 }
 
+
+extern Admin admin;
 void Widget::login() {
+    saveFile(admin.user_list, "./memo.txt");
     qDebug() << "userLogin";
     UserAccountDisplay* userAccountDisPlay =new UserAccountDisplay();
     userAccountDisPlay->show();
@@ -31,4 +39,9 @@ void Widget::showRegisterWindow() {
     regi->show();
     qDebug() << "register";
 }
+
+
+
+
+
 
