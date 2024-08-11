@@ -12,7 +12,7 @@ AccountLogger& AccountLogger::getLogger() {
     return logger;
 }
 
-void AccountLogger::set_log(shared_ptr<AccountLog> log) {
+void AccountLogger::set_log(std::shared_ptr<AccountLog> log) {
     logVector.push_back(log);
 }
 
@@ -21,7 +21,7 @@ int AccountLogger::get_size() {
 }
 
 void AccountLogger::show_all_log() {
-    for(shared_ptr<AccountLog> log :logVector) {
+    for(std::shared_ptr<AccountLog> log :logVector) {
         qDebug() << log->show_log();
     }
 }
