@@ -8,14 +8,14 @@
 #include "User.h"
 
 
-class AccountWithdrawLog : AccountLog {
+class AccountWithdrawLog : public AccountLog {
 
     User * user;
-    Account * account;
+    shared_ptr<Account> account;
     long long withDrawAmount;
 public:
     std::string show_log() override;
-    AccountWithdrawLog(User * user , Account * account ,long long withDrawAmount);
+    AccountWithdrawLog(User * user , shared_ptr<Account> account ,long long withDrawAmount);
 };
 
 
