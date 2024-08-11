@@ -3,6 +3,7 @@
 //
 
 #include "AccountWithdrawLog.h"
+#include "User.h"
 
 std::string AccountWithdrawLog::show_log() {
 

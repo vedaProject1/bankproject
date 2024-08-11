@@ -3,10 +3,9 @@
 //
 
 #include "AccountDepositLog.h"
+#include "User.h"
 
-#include <QtCore>
-
-AccountDepositLog::AccountDepositLog(User *user, shared_ptr<Account> account, long long deposit_amount): user(user), deposit_amount(deposit_amount) ,account (account) {
+AccountDepositLog::AccountDepositLog(User *user, std::shared_ptr<Account> account, long long deposit_amount): user(user), deposit_amount(deposit_amount) ,account (account) {
 }
 
 std::string AccountDepositLog::show_log() {
