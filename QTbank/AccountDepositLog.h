@@ -11,10 +11,10 @@
 class AccountDepositLog : public AccountLog{
 
     User * user;
-    Account * account;
+    shared_ptr<Account> account;
     long long deposit_amount;
 public:
-    AccountDepositLog(User* user, Account * account ,long long deposit_amount);
+    AccountDepositLog(User* user, shared_ptr<Account> account ,long long deposit_amount);
     std::string show_log() override;
 };
 
