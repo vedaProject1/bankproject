@@ -12,11 +12,11 @@
 class AccountLogger {
 
     static AccountLogger logger;
-    std::vector<AccountLog *> logVector;
+    std::vector<shared_ptr<AccountLog>> logVector;
 public:
     AccountLogger(){};
     static AccountLogger& getLogger();
-    void set_log(AccountLog * log);
+    void set_log(shared_ptr<AccountLog> log);
     void show_all_log();
     int get_size();
 };
