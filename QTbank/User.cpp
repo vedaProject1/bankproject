@@ -62,7 +62,7 @@ User::~User() {
 }
 
 void User::deposit(long long account_num, long amount) {
-	Account * user_account = get_user_account(account_num);
+	shared_ptr<Account> user_account = get_user_account_shared(account_num);
 	if(user_account == nullptr) {
         //cout << "해당 계좌가 없습니다" << endl;
 		return;
@@ -76,7 +76,7 @@ void User::deposit(long long account_num, long amount) {
 
 void User::withDraw(long long account_num, long amount) {
 
-	Account * user_account = get_user_account(account_num);
+	shared_ptr<Account> user_account = get_user_account_shared(account_num);
 	if(user_account == nullptr) {
         // << "해당 사용자가 없습니다" << endl;
 		return;
