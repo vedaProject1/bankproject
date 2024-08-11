@@ -3,6 +3,9 @@
 
 #include"Person.h"
 #include"Account.h"
+#include "AccountDepositLog.h"
+#include "AccountLogger.h"
+#include "AccountWithdrawLog.h"
 
 class User :public Person
 {
