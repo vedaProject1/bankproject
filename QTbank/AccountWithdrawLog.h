@@ -5,13 +5,14 @@
 #ifndef ACCOUNTWITHDRAWLOG_H
 #define ACCOUNTWITHDRAWLOG_H
 #include "AccountLog.h"
-#include "User.h"
+#include "Account.h"
+class User;
 
 
 class AccountWithdrawLog : public AccountLog {
 
     User * user;
-    shared_ptr<Account> account;
+    std::shared_ptr<Account> account;
     long long withDrawAmount;
 public:
     std::string show_log() override;
