@@ -70,7 +70,11 @@ void User::deposit(long long account_num, long amount) {
 	if(amount<=0) {
         //cout << "입금액이 0보다 적습니다"<< endl;
 	}
+
+	AccountLogger logger = AccountLogger::getLogger();
 	user_account->plus(amount);
+	logger.set_log(make_shared<AccountDepositLog>(this,user_account,amount));
+
 }
 
 
@@ -89,8 +93,9 @@ void User::withDraw(long long account_num, long amount) {
         //cout << "잔액이 부족합니다" << endl;
 		return;
 	}
-
+	AccountLogger logger = AccountLogger::getLogger();
 	user_account->minus(amount);
+	logger.set_log(make_shared<AccountWithdrawLog>(this,user_account,amount));
 
 }
 
