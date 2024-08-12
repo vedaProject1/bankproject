@@ -6,9 +6,11 @@
 #define ACCOUNTLOG_H
 #include <string>
 
+class User;
 
 class AccountLog {
 public:
     virtual std::string show_log() = 0;
+    virtual User* get_loged_user() = 0;
 };
 #endif //ACCOUNTLOG_H
