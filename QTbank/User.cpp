@@ -62,7 +62,7 @@ User::~User() {
 }
 
 void User::deposit(long long account_num, long amount) {
-	Account * user_account = get_user_account(account_num);
+	shared_ptr<Account> user_account = get_user_account_shared(account_num);
 	if(user_account == nullptr) {
         //cout << "해당 계좌가 없습니다" << endl;
 		return;
@@ -70,13 +70,17 @@ void User::deposit(long long account_num, long amount) {
 	if(amount<=0) {
         //cout << "입금액이 0보다 적습니다"<< endl;
 	}
+
+	AccountLogger logger = AccountLogger::getLogger();
 	user_account->plus(amount);
+	logger.set_log(make_shared<AccountDepositLog>(this,user_account,amount));
+
 }
 
 
 void User::withDraw(long long account_num, long amount) {
 
-	Account * user_account = get_user_account(account_num);
+	shared_ptr<Account> user_account = get_user_account_shared(account_num);
 	if(user_account == nullptr) {
         // << "해당 사용자가 없습니다" << endl;
 		return;
@@ -89,8 +93,9 @@ void User::withDraw(long long account_num, long amount) {
         //cout << "잔액이 부족합니다" << endl;
 		return;
 	}
-
+	AccountLogger logger = AccountLogger::getLogger();
 	user_account->minus(amount);
+	logger.set_log(make_shared<AccountWithdrawLog>(this,user_account,amount));
 
 }
 
@@ -142,6 +147,19 @@ void User::show_all_accounts() {
 
 vector<shared_ptr<Account>> User::get_all_accounts() {
 	return user_account;
+}
+
+shared_ptr<Account> User::get_user_account_shared(long long account_num) {
+
+	auto it = find_if(user_account.begin(),user_account.end(),[=](shared_ptr<Account> account) {
+		return account->get_account_num() == account_num;
+	});
+
+	if(it != user_account.end()) {
+		return *it;
+	}
+
+	return nullptr;
 }
 
 
