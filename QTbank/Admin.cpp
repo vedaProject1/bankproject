@@ -58,3 +58,44 @@ void Admin::search_user()
     if (check == false)
         cout << "no user";
 }
+
+
+void Admin::search_user(string id){
+    bool check = false;
+    //cin >> name;
+    vector<Person *>::iterator it;
+    for (it = user_list.begin(); it != user_list.end(); it++) {
+        if (id == (*it)->get_id()) {
+            cout << (*it)->get_name() << "user information\n";
+            cout << "account num :" << (*it)->get_user_account().get_account_num() << endl;
+            cout << "balance :" << (*it)->get_user_account().get_balance() << endl;
+
+            check = true;
+        }
+    }
+
+    if (check == false)
+        cout << "no user";
+}
+
+int Admin::search_user_return_idx(string id){
+    bool check = false;
+    int idx=0;
+    vector<Person *>::iterator it;
+    for (it = user_list.begin(); it != user_list.end(); it++) {
+
+        if (id == (*it)->get_id()) {
+            cout << (*it)->get_name() << "user information\n";
+            cout << "account num :" << (*it)->get_user_account().get_account_num() << endl;
+            cout << "balance :" << (*it)->get_user_account().get_balance() << endl;
+            check = true;
+            return idx;
+            idx++;
+        }
+    }
+
+    if (check == false){
+        cout << "no user";
+        return -1;
+    }
+}

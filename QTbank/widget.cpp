@@ -40,12 +40,20 @@ void Widget::login_s() {
     QString login_result_qs=QString::fromStdString(login_result_s);
     qDebug()<<login_result_qs;
 
-    // //유저를 셋팅해서 보여줌
-    // User *user = new User("hello","pass","userName");
-    // user->add_account();
-    // UserAccountDisplay* userAccountDisPlay =new UserAccountDisplay();
-    // userAccountDisPlay->set_user(*user);
-    // userAccountDisPlay->show();
+    admin.search_user(id.toStdString());
+
+
+
+    int idx=admin.search_user_return_idx(id.toStdString());
+
+    //유저를 셋팅해서 보여줌
+
+    User *user = dynamic_cast<User*>(admin.user_list[idx]);
+    //user->add_account();
+    UserAccountDisplay* userAccountDisPlay =new UserAccountDisplay();
+    userAccountDisPlay->set_user(*user);
+    //userAccountDisPlay->set_user(admin.user_list[idx]);
+    userAccountDisPlay->show();
 }
 
 void Widget::showRegisterWindow() {

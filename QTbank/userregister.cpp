@@ -8,6 +8,7 @@
 #include "ui_userRegister.h"
 #include"Admin.h"
 #include<QMessageBox>
+#include"User.h"
 extern Admin admin;
 
 userRegister::userRegister(QWidget *parent) :
@@ -57,6 +58,7 @@ void userRegister::registerUser() {
         User* user = new User(i, p, n);
         user->add_account(bankIndex);
         admin.user_list.push_back(user);
+        admin.search_user(i);
         QMessageBox::question(this,"Complete","join complete",QMessageBox::Yes);
         qDebug() << "join complete\n";
         userRegister::close();
@@ -66,5 +68,7 @@ void userRegister::registerUser() {
         ui->lineEdit_id->clear();
         return;
     }
+
+
 }
 

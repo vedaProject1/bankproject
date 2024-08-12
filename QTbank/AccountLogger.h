@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 #include "AccountLog.h"
+using namespace  std;
+#include<memory>
 
 
 class AccountLogger {

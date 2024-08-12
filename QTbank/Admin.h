@@ -12,6 +12,8 @@ public:
     ~Admin();
     void admin_menu();
     void search_user();
+    void search_user(string id);
+    int search_user_return_idx(string id);
     Account get_user_account();
 
     //void change_id();
