@@ -40,11 +40,18 @@ void Widget::login_s() {
     QString login_result_qs=QString::fromStdString(login_result_s);
     qDebug()<<login_result_qs;
 
-    admin.search_user(id.toStdString());
+    //admin.search_user(id.toStdString());
+
+    if (login_result_qs == "loginsucces") {
+        int idx = admin.search_user_return_idx(id.toStdString());
+        qDebug()<<"person idx:"<<idx;
+        // 기존에 생성된 UserAccountDisplay 객체가 있으면 삭제
+        if (userAccountDisplay) {
+            delete userAccountDisplay;
+        }
 
 
-
-    int idx=admin.search_user_return_idx(id.toStdString());
+    //int idx=admin.search_user_return_idx(id.toStdString());
 
     //유저를 셋팅해서 보여줌
 
@@ -54,6 +61,7 @@ void Widget::login_s() {
     userAccountDisPlay->set_user(*user);
     //userAccountDisPlay->set_user(admin.user_list[idx]);
     userAccountDisPlay->show();
+    }
 }
 
 void Widget::showRegisterWindow() {
@@ -64,6 +72,13 @@ void Widget::showRegisterWindow() {
 }
 
 
+
+
+void Widget::closeEvent(QCloseEvent *event) {
+    saveFile(admin.user_list, "./memo1.txt");
+    qDebug() << "Data saved";
+    event->accept();  // 기본 동작 수행
+}
 
 
 

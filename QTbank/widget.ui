@@ -140,5 +140,6 @@
  <slots>
   <slot>login_s()</slot>
   <slot>showRegisterWindow()</slot>
+  <slot>closeEvent()</slot>
  </slots>
 </ui>

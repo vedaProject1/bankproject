@@ -2,7 +2,8 @@
 #define WIDGET_H
 
 #include <QWidget>
-
+#include<QCloseEvent>
+#include"useraccountdisplay.h"
 
 
 
@@ -22,10 +23,12 @@ public:
 
 private:
     Ui::Widget *ui;
+    UserAccountDisplay *userAccountDisplay = nullptr;
 
 public slots:
     void login_s();
     void showRegisterWindow();
+    void closeEvent(QCloseEvent *event);
 
 };
 #endif // WIDGET_H

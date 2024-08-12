@@ -90,12 +90,13 @@ int Admin::search_user_return_idx(string id){
             cout << "balance :" << (*it)->get_user_account().get_balance() << endl;
             check = true;
             return idx;
-            idx++;
+
         }
+        idx++;
     }
 
     if (check == false){
         cout << "no user";
-        return -1;
+        return 1000;
     }
 }

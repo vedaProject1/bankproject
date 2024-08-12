@@ -12,13 +12,13 @@ Admin admin;
 
 int main(int argc, char *argv[])
 {
-    loadFile(admin.user_list, "./memo.txt");
+    loadFile(admin.user_list, "./memo1.txt");
 
 
     QApplication a(argc, argv);
     Widget w;
     w.show();
-    //saveFile(admin.user_list, "./memo.txt");// 여기서 안됨
+
     return a.exec();
 
 }

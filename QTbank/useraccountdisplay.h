@@ -9,6 +9,7 @@
 #include "User.h"
 #include <QInputDialog>
 #include <QStringListModel>
+#include<QCloseEvent>
 
 
 QT_BEGIN_NAMESPACE
@@ -31,6 +32,8 @@ public slots:
     void deposit_s();
     void withdraw_s();
     void on_item_clicked(const QModelIndex &index);
+    void closeEvent(QCloseEvent *event);
+
 
 private:
     Ui::UserAccountDisplay *ui;
