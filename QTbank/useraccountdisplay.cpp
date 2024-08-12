@@ -5,6 +5,7 @@
 // You may need to build the project (run Qt uic code generator) to get "ui_UserAccountDisplay.h" resolved
 
 #include "useraccountdisplay.h"
+#include "accountselectionui.h"
 #include "ui_UserAccountDisplay.h"
 
 
@@ -99,6 +100,33 @@ void UserAccountDisplay::on_item_clicked(const QModelIndex &index) {
 void UserAccountDisplay::closeEvent(QCloseEvent *event) {
 
     event->accept();  // 기본 동작 수행
+}
+
+void UserAccountDisplay::show_generate_account_ui() {
+
+    AccountSelectionUI * ui = new AccountSelectionUI();
+    ui->set_user(user);
+    ui->show();
+    connect(ui,&AccountSelectionUI::destroyed, this,&UserAccountDisplay::refresh_user_account);
+
+}
+
+void UserAccountDisplay::refresh_user_account() {
+
+    qDebug() << " wowowowwow";
+    vector<shared_ptr<Account>> accountList = user->get_all_accounts();
+    QStringList initialData;
+
+    for(int i =0; i<accountList.size(); i++) {
+
+        initialData.push_back(QString::number(accountList.at(i)->get_account_num()));
+
+    }
+    model = new QStringListModel(this);
+    model->setStringList(initialData);
+
+
+    ui->listView_2->setModel(model);
 }
 
 

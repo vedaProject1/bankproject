@@ -33,8 +33,8 @@ public slots:
     void withdraw_s();
     void on_item_clicked(const QModelIndex &index);
     void closeEvent(QCloseEvent *event);
-
-
+    void show_generate_account_ui();
+    void refresh_user_account();
 private:
     Ui::UserAccountDisplay *ui;
 };
