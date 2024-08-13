@@ -86,6 +86,8 @@ void Widget::showRegisterWindow() {
 
 
 void Widget::closeEvent(QCloseEvent *event) {
+    AccountLogger &logger = AccountLogger::getLogger();
+    logger.save_all_logs();
     saveFile(admin.user_list, "./memo1.txt");
     qDebug() << "Data saved";
     event->accept();  // 기본 동작 수행

@@ -12,8 +12,10 @@ Admin admin;
 
 int main(int argc, char *argv[])
 {
-    loadFile(admin.user_list, "./memo1.txt");
 
+    loadFile(admin.user_list, "./memo1.txt");
+    AccountLogger &logger = AccountLogger::getLogger();
+    logger.load_all_logs();
 
     QApplication a(argc, argv);
     Widget w;
