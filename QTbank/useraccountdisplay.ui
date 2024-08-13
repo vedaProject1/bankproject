@@ -140,7 +140,7 @@
     <string>입금하기</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="AccountGenerate">
    <property name="geometry">
     <rect>
      <x>410</x>
@@ -204,10 +204,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>AccountGenerate</sender>
+   <signal>clicked()</signal>
+   <receiver>UserAccountDisplay</receiver>
+   <slot>show_generate_account_ui()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>445</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>262</x>
+     <y>196</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>deposit_s()</slot>
   <slot>on_item_clicked(QModelIndex)</slot>
   <slot>withdraw_s()</slot>
+  <slot>show_generate_account_ui()</slot>
  </slots>
 </ui>

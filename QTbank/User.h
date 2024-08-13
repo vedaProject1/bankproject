@@ -9,7 +9,6 @@
 
 class User :public Person
 {
-	//vector<unique_ptr<Account>> user_account;
 
 public:
 	vector<shared_ptr<Account>> user_account;

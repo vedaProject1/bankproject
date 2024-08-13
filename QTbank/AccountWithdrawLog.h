@@ -17,6 +17,7 @@ class AccountWithdrawLog : public AccountLog {
     long long balance;
 public:
     std::string show_log() override;
+    User* get_loged_user() override;
     AccountWithdrawLog(User * user , shared_ptr<Account> account ,long long withDrawAmount);
 };
 

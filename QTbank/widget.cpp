@@ -8,7 +8,7 @@
 #include"func.h"
 #include<QString>
 
-
+#include "adminaccountdisplay.h"
 
 
 Widget::Widget(QWidget *parent)
@@ -46,6 +46,7 @@ void Widget::login_s() {
         int idx = admin.search_user_return_idx(id.toStdString());
         qDebug()<<"person idx:"<<idx;
         // 기존에 생성된 UserAccountDisplay 객체가 있으면 삭제
+        //todo: 삭제 여부 검토 필요
         if (userAccountDisplay) {
             delete userAccountDisplay;
         }
@@ -56,11 +57,21 @@ void Widget::login_s() {
     //유저를 셋팅해서 보여줌
 
     User *user = dynamic_cast<User*>(admin.user_list[idx]);
-    //user->add_account();
-    UserAccountDisplay* userAccountDisPlay =new UserAccountDisplay();
-    userAccountDisPlay->set_user(*user);
-    //userAccountDisPlay->set_user(admin.user_list[idx]);
-    userAccountDisPlay->show();
+        if(user != nullptr) {
+        qDebug() << "user Idx" << idx;
+        qDebug() << "founcded user Id" << user->get_id();
+        UserAccountDisplay* userAccountDisPlay =new UserAccountDisplay();
+        userAccountDisPlay->set_user(*user);
+        userAccountDisPlay->show();
+
+        }
+    }
+    else if(login_result_qs == "admin") {
+
+        qDebug()<< "admin User";
+        AdminAccountDisplay * adminDisplay = new AdminAccountDisplay();
+        adminDisplay ->show();
+
     }
 }
 
