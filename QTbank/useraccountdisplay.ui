@@ -88,7 +88,7 @@
     <string>계좌 목록</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="accountBank">
    <property name="geometry">
     <rect>
      <x>40</x>

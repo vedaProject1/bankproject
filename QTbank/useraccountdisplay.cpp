@@ -5,6 +5,9 @@
 // You may need to build the project (run Qt uic code generator) to get "ui_UserAccountDisplay.h" resolved
 
 #include "useraccountdisplay.h"
+
+#include <QMessageBox>
+
 #include "accountselectionui.h"
 #include "ui_UserAccountDisplay.h"
 
@@ -43,6 +46,10 @@ void UserAccountDisplay::set_user(User& user){
     ui->userName->setText(QString::fromStdString(user.get_name()));
     ui->userBalance->setText(QString::number(user.get_user_account().get_balance()));
     ui->userAccountNumber -> setText(QString::number(user.get_user_account().get_account_num()));
+
+    BANK_NAME bank_id = user.get_user_account().get_bank_name();
+    ui->accountBank -> setText(QString::fromStdString(user.get_user_account().get_bank_name_str(bank_id)));
+
     ui->listView_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
     vector<shared_ptr<Account>> accountList = user.get_all_accounts();
     QStringList initialData;
@@ -71,9 +78,20 @@ void UserAccountDisplay::deposit_s() {
     int amount =QInputDialog::getInt (this,"Input Deposit Amount", "Input Deposit Amount", QLineEdit::Normal,0);
     long long account_number = ui->userAccountNumber->text().toLongLong();
     qDebug() << account_number;
-    user->deposit(account_number,amount);
-    qDebug() << "deposit success";
-    ui->userBalance->setText(QString::number(user->getBalance(account_number)));
+    try {
+        user->deposit(account_number,amount);
+        ui->userBalance->setText(QString::number(user->getBalance(account_number)));
+        qDebug() << "deposit success";
+    }
+    catch (const std::string& exception) {  // std::string 타입으로 받기
+        QMessageBox msgBox;
+        msgBox.setText(QString::fromStdString(exception));  // 예외 메시지를 보여줌
+        msgBox.exec();
+    } catch (const std::exception& e) {  // std::exception 타입 예외 처리
+        return;
+    }
+
+
 
 
 }
@@ -82,17 +100,28 @@ void UserAccountDisplay::withdraw_s() {
 
     int amount =QInputDialog::getInt (this,"Input withDraw Amount", "Input withDraw", QLineEdit::Normal,0);
     long long account_number = ui->userAccountNumber->text().toLongLong();
-    qDebug() << account_number;
-    user->withDraw(account_number,amount);
-    qDebug() << "withDraw success";
-    ui->userBalance->setText(QString::number(user->getBalance(account_number)));
+    try {
+        user->withDraw(account_number,amount);
+        qDebug() << "withDraw success";
+        ui->userBalance->setText(QString::number(user->getBalance(account_number)));
+    }catch (const std::string& exception) {
+        QMessageBox msgBox;
+        msgBox.setText(QString::fromStdString(exception));  // 예외 메시지를 보여줌
+        msgBox.exec();
+    }
+
 }
 
 void UserAccountDisplay::on_item_clicked(const QModelIndex &index) {
     QString itemText = model->data(index, Qt::DisplayRole).toString();
-        // "Item 2"가 클릭되었을 때 수행할 작업
-        qDebug() << itemText;
-        // 여기에 원하는 작업을 추가하세요
+
+    long long account_number =itemText.toLongLong();
+    shared_ptr<Account> user_account = user->get_user_account_shared(account_number);
+
+    ui->userBalance->setText(QString::number(user_account->get_balance()));
+    ui->userAccountNumber -> setText(QString::number(user_account->get_account_num()));
+    BANK_NAME bank_id = user_account->get_bank_name();
+    ui->accountBank -> setText(QString::fromStdString(user_account->get_bank_name_str(bank_id)));
 
 }
 
