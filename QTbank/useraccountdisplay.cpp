@@ -9,6 +9,7 @@
 #include <QMessageBox>
 
 #include "accountselectionui.h"
+#include "accounttransferwindow.h"
 #include "ui_UserAccountDisplay.h"
 
 
@@ -134,6 +135,18 @@ void UserAccountDisplay::refresh_user_account() {
 
 
     ui->listView_2->setModel(model);
+}
+
+void UserAccountDisplay::show_transfer_window() {
+
+    AccountTransferWindow *window = new AccountTransferWindow();
+    window->setUser(user,ui->userAccountNumber->text());
+    window->show();
+    connect(window,&AccountTransferWindow::destroyed,this,&UserAccountDisplay::after_transfer);
+}
+
+void UserAccountDisplay::after_transfer() {
+
 }
 
 
