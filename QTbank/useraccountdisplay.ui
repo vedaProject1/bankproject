@@ -233,11 +233,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>transferButton</sender>
+   <signal>clicked()</signal>
+   <receiver>UserAccountDisplay</receiver>
+   <slot>show_transfer_window()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>155</x>
+     <y>315</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>262</x>
+     <y>196</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>deposit_s()</slot>
   <slot>on_item_clicked(QModelIndex)</slot>
   <slot>withdraw_s()</slot>
   <slot>show_generate_account_ui()</slot>
+  <slot>show_transfer_window()</slot>
  </slots>
 </ui>

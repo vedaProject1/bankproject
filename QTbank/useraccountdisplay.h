@@ -36,7 +36,7 @@ public slots:
     void show_generate_account_ui();
     void refresh_user_account();
     void show_transfer_window();
-
+    void after_transfer();
 private:
     Ui::UserAccountDisplay *ui;
 };
