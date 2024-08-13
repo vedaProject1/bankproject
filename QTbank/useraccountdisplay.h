@@ -32,9 +32,11 @@ public slots:
     void deposit_s();
     void withdraw_s();
     void on_item_clicked(const QModelIndex &index);
-    void closeEvent(QCloseEvent *event);
+    void closeEvent(QCloseEvent *event) override;
     void show_generate_account_ui();
     void refresh_user_account();
+    void show_transfer_window();
+
 private:
     Ui::UserAccountDisplay *ui;
 };

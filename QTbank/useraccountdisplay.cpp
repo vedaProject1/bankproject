@@ -61,11 +61,11 @@ void UserAccountDisplay::deposit_s() {
         ui->userBalance->setText(QString::number(user->getBalance(account_number)));
         qDebug() << "deposit success";
     }
-    catch (const std::string& exception) {  // std::string 타입으로 받기
+    catch (const std::string& exception) {  // std::string ??????? ???
         QMessageBox msgBox;
-        msgBox.setText(QString::fromStdString(exception));  // 예외 메시지를 보여줌
+        msgBox.setText(QString::fromStdString(exception));  // ???? ??????? ??????
         msgBox.exec();
-    } catch (const std::exception& e) {  // std::exception 타입 예외 처리
+    } catch (const std::exception& e) {  // std::exception ??? ???? ???
         return;
     }
 
@@ -84,7 +84,7 @@ void UserAccountDisplay::withdraw_s() {
         ui->userBalance->setText(QString::number(user->getBalance(account_number)));
     }catch (const std::string& exception) {
         QMessageBox msgBox;
-        msgBox.setText(QString::fromStdString(exception));  // 예외 메시지를 보여줌
+        msgBox.setText(QString::fromStdString(exception));  // ???? ??????? ??????
         msgBox.exec();
     }
 
@@ -106,7 +106,7 @@ void UserAccountDisplay::on_item_clicked(const QModelIndex &index) {
 
 void UserAccountDisplay::closeEvent(QCloseEvent *event) {
 
-    event->accept();  // 기본 동작 수행
+    event->accept();  // ?? ???? ????
 }
 
 void UserAccountDisplay::show_generate_account_ui() {
