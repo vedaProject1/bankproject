@@ -26,6 +26,8 @@ public:
     std::vector<std::string> get_all_deposit_logs();
     std::vector<std::string> get_all_withdraw_logs();
     std::vector<std::string> get_all_user_logs(string id);
+    void save_all_logs();
+    void load_all_logs();
 };
 
 #endif //ACCOUNTLOGGER_H

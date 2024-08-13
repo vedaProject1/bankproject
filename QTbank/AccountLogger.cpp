@@ -3,7 +3,7 @@
 //
 
 #include "AccountLogger.h"
-
+#include <fstream>
 #include <QtCore>
 
 #include "Admin.h"
@@ -79,6 +79,69 @@ std::vector<std::string> AccountLogger::get_all_user_logs(string id) {
         }
     }
     return result;
+}
+
+void AccountLogger::save_all_logs() {
+
+    ofstream outFile("./accountlogs.txt");
+    if (!outFile) {
+        cerr << "파일을 열 수 없습니다." << std::endl;
+        return;
+    }
+
+    for(shared_ptr<AccountLog> log :logVector) {
+        log->save(outFile);
+    }
+
+    qDebug() << "save success";
+
+}
+
+void AccountLogger::load_all_logs() {
+
+
+    ifstream inFile("./accountlogs.txt");
+    if (!inFile) {
+        std::cerr << "파일을 열 수 없습니다." << std::endl;
+        return;
+    }
+    string type , user_id , account_num, amount, balance;
+
+
+
+
+    while (getline(inFile, type) &&
+           getline(inFile, user_id) &&
+           getline(inFile, account_num) &&
+           getline(inFile,amount) &&
+           getline(inFile, balance)
+           ) {
+
+            int idx =admin.search_user_return_idx(user_id);
+            User * user = static_cast<User *>(admin.user_list[idx]);
+            std::shared_ptr<Account> account = user->get_user_account_shared(stoll(account_num));
+
+            auto deposit_log = [&]() {
+                return make_shared<AccountDepositLog>(user,account,stoll(amount),stod(balance));
+            };
+
+            auto withdraw_log = [&]() {
+                return make_shared<AccountWithdrawLog>(user,account,stoll(amount),stoll(balance));
+            };
+            std::map<std::string, std::function<std::shared_ptr<AccountLog>()>> type_map;
+
+            type_map.insert({"W",withdraw_log});
+            type_map.insert({"D",deposit_log});
+
+            logVector.push_back(type_map[type]());
+
+    }
+
+    inFile.close();
+    //std::cout << "파일로드완료" << std::endl;
+    std::cout << "fileload" << std::endl;
+
+
 }
 
 
