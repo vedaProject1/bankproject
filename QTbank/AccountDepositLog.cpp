@@ -8,6 +8,11 @@
 AccountDepositLog::AccountDepositLog(User *user, std::shared_ptr<Account> account, long long deposit_amount): user(user), deposit_amount(deposit_amount) ,account (account) ,balance(account->get_balance()) {
 }
 
+AccountDepositLog::AccountDepositLog(User *user, shared_ptr<Account> account, long long deposit_amount,
+    long long balance):user(user), account(account), deposit_amount(deposit_amount),balance(balance) {
+}
+
+
 User * AccountDepositLog::get_loged_user() {
     return this->user;
 }

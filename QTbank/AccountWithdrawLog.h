@@ -20,6 +20,8 @@ public:
     User* get_loged_user() override;
     void save(std::ofstream & outFile) override;
     AccountWithdrawLog(User * user , shared_ptr<Account> account ,long long withDrawAmount);
+    AccountWithdrawLog(User * user, shared_ptr<Account> account , long long withDrawAmount , long long balance);
+
 };
 
 
