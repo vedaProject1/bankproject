@@ -61,14 +61,14 @@ User::~User() {
 
 }
 
-void User::deposit(long long account_num, long amount) {
+void User::deposit(long long account_num, long amount)  {
 	shared_ptr<Account> user_account = get_user_account_shared(account_num);
 	if(user_account == nullptr) {
-        //cout << "해당 계좌가 없습니다" << endl;
+		throw std::string("There is no Account with ") + std::to_string(account_num);
 		return;
 	}
 	if(amount<=0) {
-        //cout << "입금액이 0보다 적습니다"<< endl;
+		throw std::string("Deposit amount must be over 0");
 	}
 
 	AccountLogger &logger = AccountLogger::getLogger();
@@ -82,15 +82,15 @@ void User::withDraw(long long account_num, long amount) {
 
 	shared_ptr<Account> user_account = get_user_account_shared(account_num);
 	if(user_account == nullptr) {
-        // << "해당 사용자가 없습니다" << endl;
+		throw std::string("There is no Account with ") + std::to_string(account_num);
 		return;
 	}
 	if(amount<=0) {
-        //cout << "출금액이 0보다 적습니다"<< endl;
+		throw std::string("Withdraw amount must be over 0.");
 		return;
 	}
 	if(user_account->get_balance() - amount <0) {
-        //cout << "잔액이 부족합니다" << endl;
+       throw std::string("There is no balance");
 		return;
 	}
 	AccountLogger &logger = AccountLogger::getLogger();
@@ -103,8 +103,7 @@ double User::getBalance( long long account_num) {
 
 	Account * user_account = get_user_account(account_num);
 	if(user_account == nullptr) {
-        //cout << "해당 사용자가 없습니다" << endl;
-		return -1;
+		throw std::string("There is no Account with ") + std::to_string(account_num);
 	}
 	return user_account->get_balance();
 
