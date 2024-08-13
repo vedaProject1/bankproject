@@ -16,3 +16,12 @@ std::string AccountDepositLog::show_log() {
     return "user :" +user->get_name()+ ", accountNumber: " + std::to_string(account->get_account_num())+ ", deposit: "  +  std::to_string(deposit_amount)+ " " + ", balance: " + std::to_string(balance);
 }
 
+void AccountDepositLog::save(std::ofstream &outFile) {
+
+    outFile << "D" << '\n';
+    outFile << user->get_id() << '\n';
+    outFile << account->get_account_num() << '\n';
+    outFile << deposit_amount << '\n';
+    outFile << balance << '\n';
+}
+
