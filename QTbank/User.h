@@ -29,6 +29,7 @@ public:
 	long long generateAccountNumber();
 	void show_all_accounts();
 	vector<shared_ptr<Account>> get_all_accounts();
+	vector<shared_ptr<Account>> &get_all_accounts_reference();
 	shared_ptr<Account> get_user_account_shared(long long account_num);
 
 private:

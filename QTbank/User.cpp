@@ -148,6 +148,10 @@ vector<shared_ptr<Account>> User::get_all_accounts() {
 	return user_account;
 }
 
+vector<shared_ptr<Account>>& User::get_all_accounts_reference() {
+	return user_account;
+}
+
 shared_ptr<Account> User::get_user_account_shared(long long account_num) {
 
 	auto it = find_if(user_account.begin(),user_account.end(),[=](shared_ptr<Account> account) {

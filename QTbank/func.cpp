@@ -108,18 +108,25 @@ void loadFile(std::vector<Person*>& user_list, const std::string& filename) {
         std::cerr << "파일을 열 수 없습니다." << std::endl;
         return;
     }
-    string id, pw, name, account_num,bank_name;
+    string id, pw, name, account_count,account_num,bank_name;
     string balance;
     while (getline(inFile, id) &&
            getline(inFile, pw) &&
            getline(inFile, name) &&
-           getline(inFile, account_num) &&
-           getline(inFile, bank_name) &&
-           inFile >> balance) {
-        inFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 줄바꿈 문자 읽기
+           getline(inFile, account_count)
+           ) {
+        // inFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 줄바꿈 문자 읽기
 
-        User* user = new User(id,pw, name, account_num,balance,bank_name);
+        User* user = new User(id,pw, name);
 
+        for(int j =0; j<stoi(account_count); j++) {
+            getline(inFile, account_num);
+            getline(inFile, bank_name);
+            getline(inFile, balance);
+
+            shared_ptr<Account> account = make_shared<Account>(stoll(account_num), BANK_NAME(stoi(bank_name)), stod(balance));
+            user->get_all_accounts_reference().push_back(account);
+        }
 
         user_list.push_back(user);
     }
@@ -128,6 +135,8 @@ void loadFile(std::vector<Person*>& user_list, const std::string& filename) {
     //std::cout << "파일로드완료" << std::endl;
     std::cout << "fileload" << std::endl;
 }
+
+
 
 
 void saveFile(vector<Person*>user_list, string filename) {
@@ -144,9 +153,16 @@ void saveFile(vector<Person*>user_list, string filename) {
         outFile << (*it)->get_id() << "\n";
         outFile << (*it)->get_pw() << "\n";
         outFile << (*it)->get_name() << "\n";
-        outFile << (*it)->get_user_account().get_account_num() << "\n";
-        outFile << (*it)->get_user_account().get_bank_name() << "\n";
-        outFile << (*it)->get_user_account().get_balance() << "\n";
+
+        User * user = dynamic_cast<User *>(*it);
+        std::vector<shared_ptr<Account>> accounts = user->get_all_accounts();
+        outFile << accounts.size() << "\n";
+        for(int j =0; j<accounts.size(); j++) {
+            outFile << accounts[j]->get_account_num() << "\n";
+            outFile << accounts[j]->get_bank_name() << "\n";
+            outFile << accounts[j]->get_balance() << "\n";
+        }
+
     }
     outFile.close();
     //cout << "파일저장완료" << endl;
