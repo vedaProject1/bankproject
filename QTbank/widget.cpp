@@ -7,6 +7,7 @@
 #include"Admin.h"
 #include"func.h"
 #include<QString>
+#include<QMessageBox>
 
 #include "adminaccountdisplay.h"
 
@@ -52,11 +53,12 @@ void Widget::login_s() {
         }
 
 
+
     //int idx=admin.search_user_return_idx(id.toStdString());
 
     //유저를 셋팅해서 보여줌
 
-    User *user = dynamic_cast<User*>(admin.user_list[idx]);
+        User *user = dynamic_cast<User*>(admin.user_list[idx]);
         if(user != nullptr) {
         qDebug() << "user Idx" << idx;
         qDebug() << "founcded user Id" << user->get_id();
@@ -73,6 +75,12 @@ void Widget::login_s() {
         adminDisplay ->show();
 
     }
+    else{
+        QMessageBox::question(this,"login fail","login fail",QMessageBox::Yes);
+    }
+
+
+
 }
 
 void Widget::showRegisterWindow() {
