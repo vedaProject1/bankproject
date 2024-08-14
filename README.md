@@ -58,7 +58,7 @@
 ### 7. 관리자 로그인, 로그 확인 
 id:admin ,pw:1234
 관리자로 로그인하면, 모든 사용자의 거래 내역을 확인할 수 있습니다.<br><br>
-![image](https://github.com/user-attachments/assets/d24b83a3-f354-4746-a300-90b8ff7f5d7f)
+![관리자 로그인 GIF](images/admin.gif)
 
 
 
