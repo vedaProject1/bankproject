@@ -146,6 +146,10 @@ void UserAccountDisplay::show_transfer_window() {
 }
 
 void UserAccountDisplay::after_transfer() {
+    long long account_number =  ui->userAccountNumber->text().toLongLong();
+
+    double balance =user->get_user_account(account_number)->get_balance();
+    ui->userBalance->setText(QString::number(balance));
 
 }
 
