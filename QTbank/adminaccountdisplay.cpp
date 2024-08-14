@@ -19,6 +19,7 @@ AdminAccountDisplay::AdminAccountDisplay(QWidget *parent) :
     ui->userAccountList->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->userAccountTransaction ->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->allTransaction->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    show_all_transaction_logs();
 }
 
 AdminAccountDisplay::~AdminAccountDisplay() {
