@@ -45,7 +45,7 @@
 
   <br>
 
-### 3. 회원 로그인
+### 3. 회원 로그인<br><br>
 <img src="https://github.com/user-attachments/assets/ba68fc27-27fd-425e-8934-e83e5b4aa92c" alt="회원 로그인" width="50%">
 
 <br>
@@ -55,9 +55,11 @@
 
 <br>
 
-### 7. 관리자 로그인, 로그 확인
-관리자로 로그인하면, 모든 사용자의 거래 내역을 확인할 수 있습니다.
+### 7. 관리자 로그인, 로그 확인 
+id:admin ,pw:1234
+관리자로 로그인하면, 모든 사용자의 거래 내역을 확인할 수 있습니다.<br><br>
+![image](https://github.com/user-attachments/assets/d24b83a3-f354-4746-a300-90b8ff7f5d7f)
 
-<img src="https://github.com/user-attachments/assets/468262de-a93e-4d29-b9c7-d2c5b983f9b9" alt="관리자 로그인" width="50%">
+
 
 <br>
