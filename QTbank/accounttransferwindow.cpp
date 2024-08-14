@@ -47,14 +47,23 @@ void AccountTransferWindow::transfer() {
         });
 
         if(found_user_account != tranferUser_accounts.end()) {
-            user->get_user_account_shared(current_account_number)->minus(amount);
-            (*found_user_account)->plus(amount);
-            qDebug() << "transfer success";
-            QMessageBox msgBox;
-            msgBox.setText("transfer success");
-            msgBox.exec();
-            close();
-            return;
+            if(amount <= user->get_user_account_shared(current_account_number)->get_balance()) {
+                user->get_user_account_shared(current_account_number)->minus(amount);
+                (*found_user_account)->plus(amount);
+
+                qDebug() << "transfer success";
+                QMessageBox msgBox;
+                msgBox.setText("transfer success");
+                msgBox.exec();
+                close();
+                return;
+            }else {
+                QMessageBox msgBox;
+                msgBox.setText("Userbalance is lower than transfer amount");
+                msgBox.exec();
+                return;
+            }
+
         }
     }
 
