@@ -17,8 +17,10 @@ class AccountDepositLog : public AccountLog{
     long long balance;
 public:
     AccountDepositLog(User* user, shared_ptr<Account> account ,long long deposit_amount);
+    AccountDepositLog(User* user ,shared_ptr<Account> account ,long long deposit_amount, long long balance);
     User* get_loged_user() override;
     std::string show_log() override;
+    void save(std::ofstream& outFile) override;
 };
 
 

@@ -17,3 +17,16 @@ User * AccountWithdrawLog::get_loged_user() {
 AccountWithdrawLog::AccountWithdrawLog(User *user, shared_ptr<Account> account, long long withDrawAmount): user(user),account(account),withDrawAmount(withDrawAmount),balance(account->get_balance()) {
 
 }
+
+AccountWithdrawLog::AccountWithdrawLog(User *user, shared_ptr<Account> account, long long withDrawAmount,
+    long long balance):user(user), account(account), withDrawAmount(withDrawAmount), balance(balance) {
+}
+
+void AccountWithdrawLog::save(std::ofstream &outFile) {
+    outFile << "W" << '\n';
+    outFile << user->get_id() << '\n';
+    outFile << account->get_account_num() << '\n';
+    outFile << withDrawAmount << '\n';
+    outFile << balance << '\n';
+
+}

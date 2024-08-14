@@ -65,8 +65,8 @@
   <widget class="QPushButton" name="withDrawButton">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>290</y>
+     <x>170</x>
+     <y>200</y>
      <width>100</width>
      <height>71</height>
     </rect>
@@ -88,7 +88,7 @@
     <string>계좌 목록</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="accountBank">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -131,7 +131,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>290</y>
+     <y>200</y>
      <width>100</width>
      <height>71</height>
     </rect>
@@ -151,6 +151,19 @@
    </property>
    <property name="text">
     <string>계좌 생성</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="transferButton">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>280</y>
+     <width>231</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>송금하기</string>
    </property>
   </widget>
  </widget>
@@ -220,11 +233,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>transferButton</sender>
+   <signal>clicked()</signal>
+   <receiver>UserAccountDisplay</receiver>
+   <slot>show_transfer_window()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>155</x>
+     <y>315</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>262</x>
+     <y>196</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>deposit_s()</slot>
   <slot>on_item_clicked(QModelIndex)</slot>
   <slot>withdraw_s()</slot>
   <slot>show_generate_account_ui()</slot>
+  <slot>show_transfer_window()</slot>
  </slots>
 </ui>

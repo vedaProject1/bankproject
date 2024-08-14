@@ -16,6 +16,9 @@ extern Admin admin;
 AdminAccountDisplay::AdminAccountDisplay(QWidget *parent) :
     QWidget(parent), ui(new Ui::AdminAccountDisplay) {
     ui->setupUi(this);
+    ui->userAccountList->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->userAccountTransaction ->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->allTransaction->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 AdminAccountDisplay::~AdminAccountDisplay() {
@@ -75,8 +78,9 @@ void AdminAccountDisplay::show_user_transations() {
 
     ui->userName->setText(QString::fromStdString(admin.user_list[idx]->get_name()));
     ui->userBalance->setText(QString::number(admin.user_list[idx]->get_user_account().get_balance()));
-    // 사용자 계좌 설정
+    // ????? ???? ????
     vector<shared_ptr<Account>> accountList = dynamic_cast<User* >(admin.user_list[idx])->get_all_accounts();
+    foundUser = static_cast<User*>(admin.user_list[idx]);
     QStringList initialData;
 
     for(int i =0; i<accountList.size(); i++) {
@@ -84,11 +88,11 @@ void AdminAccountDisplay::show_user_transations() {
         initialData.push_back(QString::number(accountList.at(i)->get_account_num()));
 
     }
-    QStringListModel* model = new QStringListModel(this);
-    model->setStringList(initialData);
-    ui->userAccountList->setModel(model);
+    account_list_model = new QStringListModel(this);
+    account_list_model->setStringList(initialData);
+    ui->userAccountList->setModel(account_list_model);
 
-    //유저 로그를 셋팅해서 보여줌
+    //???? ?α?? ??????? ??????
     User *user = dynamic_cast<User*>(admin.user_list[idx]);
 
     std::vector<std::string> result = logger.get_all_user_logs(ui->idSearch->text().toStdString());
@@ -98,4 +102,17 @@ void AdminAccountDisplay::show_user_transations() {
     QStringListModel* userAccountTransactionModel = new QStringListModel(this);
     userAccountTransactionModel->setStringList(userTransactionalData);
     ui->userAccountTransaction->setModel(userAccountTransactionModel);
+}
+
+void AdminAccountDisplay::on_item_clicked(const QModelIndex &index) {
+    qDebug() << "cliceked";
+    QString itemText =  account_list_model->data(index, Qt::DisplayRole).toString();
+
+    long long account_number =itemText.toLongLong();
+
+    shared_ptr<Account> user_account = foundUser->get_user_account_shared(account_number);
+    ui->userBalance->setText(QString::number(user_account->get_balance()));
+    // ui->userAccountNumber -> setText(QString::number(user_account->get_account_num()));
+    // BANK_NAME bank_id = user_account->get_bank_name();
+    // ui->accountBank -> setText(QString::fromStdString(user_account->get_bank_name_str(bank_id)));
 }
